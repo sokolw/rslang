@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-account.component.scss'],
 })
 export default class UserAccountComponent implements OnInit {
+  dropdownMenu = false;
+
   ngOnInit(): void {
     console.log('UserAccountComponent');
   }

@@ -17,6 +17,11 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .user-account__name {
@@ -26,4 +31,11 @@
   font-weight: 500;
   font-size: 2rem;
   line-height: 2.4rem;
+}
+
+.user-account__dropdown-menu {
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  padding-top: 8.5rem;
 }
