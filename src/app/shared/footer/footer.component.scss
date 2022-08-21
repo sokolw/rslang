@@ -1,0 +1,60 @@
+@import '~src/scss/abstracts/variables';
+
+$rs-school-height: 70px;
+
+.footer {
+  padding: 2rem 0;
+  color: $color-light-xl;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(180deg, #1a1a1a 0%, rgba(26, 26, 26, 0.5) 100%);
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__year {
+  font-size: 2.4rem;
+}
+
+.github-list {
+  display: flex;
+  //flex-direction: column;
+  list-style: none;
+  gap: 2rem;
+}
+
+.github-list__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+  color: currentColor;
+  transition: $transition-link-hover;
+
+  &:hover {
+    text-shadow: $text-shadow-hover;
+  }
+}
+
+.link__img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url('../../../assets/img/github.svg') no-repeat center/30px;
+}
+
+.rs-school__link {
+  display: inline-block;
+  width: calc(100 / 37 * $rs-school-height);
+  height: $rs-school-height;
+  background: url('../../../assets/img/rs_school_js.svg') no-repeat center;
+
+  &:hover {
+    filter: drop-shadow(2px 4px 6px $color-main);
+    transition: $transition-link-hover;
+  }
+}
