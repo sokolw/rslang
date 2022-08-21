@@ -2,6 +2,12 @@
 
 $rs-school-height: 70px;
 
+@mixin media($width) {
+  @media (max-width: $width){
+    @content;
+  }
+}
+
 .footer {
   padding: 2rem 0;
   color: $color-light-xl;
@@ -14,6 +20,12 @@ $rs-school-height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  
+  @include media(800px) {
+    flex-direction: column;
+  }
 }
 
 .footer__year {
@@ -22,9 +34,12 @@ $rs-school-height: 70px;
 
 .github-list {
   display: flex;
-  //flex-direction: column;
   list-style: none;
   gap: 2rem;
+
+  @include media(500px) {
+    flex-direction: column;
+  }
 }
 
 .github-list__link {
