@@ -1,0 +1,31 @@
+<header class="header">
+  <div class="wrapper header__wrapper">
+    <div class="header__left">
+      <h1 class="header_logo"><a href="#">LangDice</a></h1>
+      <nav class="header__navigation">
+        <ul class="navigation">
+          <li class="navigation__item navigation__item_active"><a href="#">Главная</a></li>
+          <li class="navigation__item"><a href="#">Учебник</a></li>
+          <li
+            class="navigation__item"
+            (mouseenter)="dropdownMenu = true"
+            [ngClass]="{navigation__item_active:dropdownMenu}"
+          >
+            <a href="#">Мини-игры</a>
+          </li>
+          <li class="navigation__item"><a href="#">Статистика</a></li>
+        </ul>
+      </nav>
+      <app-dropdown-menu
+        class="header__dropdown-menu"
+        *ngIf="dropdownMenu"
+        (mouseleave)="dropdownMenu = false"
+      >
+        <span first>Аудиовызов</span>
+        <span second>Спринт</span>
+      </app-dropdown-menu>
+    </div>
+    <app-authorization-buttons *ngIf="!authorized"></app-authorization-buttons>
+    <app-user-account *ngIf="authorized"></app-user-account>
+  </div>
+</header>

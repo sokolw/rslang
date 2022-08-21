@@ -1,0 +1,50 @@
+@import '../../../scss/abstracts/variables';
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.button {
+  width: 12.5rem;
+  height: 4rem;
+  border-radius: 12.4rem;
+  border: none;
+
+  &_login {
+    border: 1px solid;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: $color-light-xl;
+    text-transform: uppercase;
+    background-color: rgba($color: $color-black, $alpha: 0);
+
+    &:hover {
+      border: 1px solid $color-main;
+      background-color: rgba($color: $color-main, $alpha: 0.5);
+      cursor: pointer;
+    }
+  }
+
+  &_sign-up {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: $color-light-xl;
+    text-transform: uppercase;
+    background-color: $color-main;
+
+    &:hover {
+      background-color: darken($color: $color-main, $amount: 20);
+      cursor: pointer;
+    }
+  }
+
+  transition: ease-in-out 0.3s;
+}

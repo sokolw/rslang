@@ -1,0 +1,41 @@
+.background-wrapper {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 4rem;
+  background: linear-gradient(#6ff363, #8963f3);
+  padding: 0.3rem;
+}
+
+.user-pic,
+.user-pic__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 4rem;
+}
+
+.user-account {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.user-account__name {
+  color: #ffffff;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+.user-account__dropdown-menu {
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  padding-top: 8.5rem;
+}
