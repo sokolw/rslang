@@ -1,12 +1,7 @@
 @import '~src/scss/abstracts/variables';
+@import '~src/scss/abstracts/mixins';
 
 $rs-school-height: 70px;
-
-@mixin media($width) {
-  @media (max-width: $width){
-    @content;
-  }
-}
 
 .footer {
   padding: 2rem 0;
