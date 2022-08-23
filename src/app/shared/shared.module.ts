@@ -10,6 +10,7 @@ import UserAccountComponent from './user-account/user-account.component';
 import RegisterComponent from './register/register.component';
 import PopupMessageComponent from './popup-message/popup-message.component';
 import LoginComponent from './login/login.component';
+import PageNotFoundComponent from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import LoginComponent from './login/login.component';
     RegisterComponent,
     LoginComponent,
     PopupMessageComponent,
+    PageNotFoundComponent,
   ],
   imports: [CommonModule, FormsModule, MatProgressSpinnerModule],
 

@@ -1,0 +1,8 @@
+@import '~src/scss/abstracts/variables';
+
+.page-not-found {
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 5rem;
+  color: $color-light-xl;
+}
