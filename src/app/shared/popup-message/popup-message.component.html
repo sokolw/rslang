@@ -1,0 +1,6 @@
+<div class="overlay" (click)="closePopup($event)">
+  <div class="popup-message">
+    <span class="popup-message__text">{{ message }}</span>
+    <button class="button__close" (click)="closePopup($event)">OK</button>
+  </div>
+</div>
