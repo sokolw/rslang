@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import AuthService from 'src/app/core/auth/auth.service';
 import RegistrationData from 'src/app/core/auth/registration-data';
-import { CLOSE, SUCCESS_REGISTRATION } from '../constants/constants';
+import { CLOSE, SUCCESS_REGISTRATION, LOGIN } from '../constants/constants';
 
 @Component({
   selector: 'app-register',
@@ -43,6 +43,11 @@ export default class RegisterComponent {
     if (buttonElem.className === 'button__close' || overlayElem.className === 'overlay') {
       this.typeOfAuthShown.emit(CLOSE);
     }
+  }
+
+  switchPopup() {
+    this.typeOfAuthShown.emit(CLOSE);
+    this.typeOfAuthShown.emit(LOGIN);
   }
 
   togglePasswordVisible() {

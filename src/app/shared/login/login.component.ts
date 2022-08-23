@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import SignInData from '../../core/auth/sign-in-data';
 import AuthService from '../../core/auth/auth.service';
 import TokenStorageService from '../../core/auth/token-storage.service';
-import { CLOSE, FAIL_LOGIN } from '../constants/constants';
+import { CLOSE, FAIL_LOGIN, REGISTER } from '../constants/constants';
 
 @Component({
   selector: 'app-login',
@@ -51,6 +51,11 @@ export default class LoginComponent {
     if (buttonElem.className === 'button__close' || overlayElem.className === 'overlay') {
       this.typeOfAuthShown.emit(CLOSE);
     }
+  }
+
+  switchPopup() {
+    this.typeOfAuthShown.emit(CLOSE);
+    this.typeOfAuthShown.emit(REGISTER);
   }
 
   togglePasswordVisible() {

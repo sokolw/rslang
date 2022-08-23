@@ -83,7 +83,9 @@
 
         <button class="submit-button" [disabled]="isLoading">SIGN IN</button>
 
-        <div class="register-popup__redirect-login">Не зарегистрированы? <span>Sign Up</span></div>
+        <div class="register-popup__redirect-login">
+          Не зарегистрированы? <span (click)="switchPopup()">Sign Up</span>
+        </div>
       </form>
     </div>
   </div>

@@ -105,7 +105,9 @@
 
         <button class="submit-button" [disabled]="isLoading">register</button>
 
-        <div class="register-popup__redirect-login">Уже есть аккаунт? <span>Login</span></div>
+        <div class="register-popup__redirect-login">
+          Уже есть аккаунт? <span (click)="switchPopup()">Login</span>
+        </div>
       </form>
     </div>
   </div>
