@@ -1,0 +1,113 @@
+<div class="overlay" (click)="closePopup($event)">
+  <div class="register-popup">
+    <div class="register-popup__close">
+      <button class="button__close" (click)="closePopup($event)">
+        <img src="../../../assets/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+    <div class="register-popup__content">
+      <h3 class="register-popup__title">Создать аккаунт</h3>
+      <form
+        class="register-popup__form"
+        #f="ngForm"
+        (ngSubmit)="f.form.valid && onSubmit(f)"
+        novalidate
+      >
+        <div class="user-name">
+          <div class="user-name__container">
+            <label for="username" class="user-name__label">
+              <div class="user-name__pic">
+                <img src="../../../assets/icons/user.svg" alt="user" />
+              </div>
+            </label>
+            <input
+              id="username"
+              class="user-name__input"
+              placeholder="username"
+              name="name"
+              ngModel
+              required
+              #name="ngModel"
+              [disabled]="isLoading"
+            />
+          </div>
+          <div class="user-name__error" *ngIf="f.submitted && (name.invalid || name.untouched)">
+            <div *ngIf="name.errors"><span>Укажите имя пользователя</span></div>
+          </div>
+        </div>
+        <div class="user-email">
+          <div class="user-email__container">
+            <label for="email" class="user-email__label">
+              <div class="user-email__pic">
+                <img src="../../../assets/icons/email.svg" alt="email" />
+              </div>
+            </label>
+            <input
+              id="email"
+              class="user-email__input"
+              name="email"
+              type="email"
+              placeholder="email"
+              ngModel
+              required
+              #email="ngModel"
+              pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+              [disabled]="isLoading"
+            />
+          </div>
+          <div class="user-email__error" *ngIf="f.submitted && (email.invalid || email.untouched)">
+            <span>Некорректный email</span>
+          </div>
+        </div>
+
+        <div class="user-password">
+          <div class="user-password__container">
+            <label for="password" class="user-password__label">
+              <div class="user-password__pic">
+                <img src="../../../assets/icons/lock.svg" alt="lock" />
+              </div>
+            </label>
+            <input
+              id="password"
+              class="user-password__input"
+              name="password"
+              [type]="!isPasswordVisible ? 'password' : ''"
+              placeholder="password"
+              ngModel
+              required
+              #password="ngModel"
+              minlength="8"
+              maxlength="20"
+              [disabled]="isLoading"
+            />
+            <div
+              class="user-password__pic-eye"
+              *ngIf="!isPasswordVisible"
+              (click)="togglePasswordVisible()"
+            >
+              <img src="../../../assets/icons/eye-no-see.svg" alt="lock" />
+            </div>
+            <div
+              class="user-password__pic-eye"
+              *ngIf="isPasswordVisible"
+              (click)="togglePasswordVisible()"
+            >
+              <img src="../../../assets/icons/eye-see.svg" alt="unlock" />
+            </div>
+          </div>
+          <div
+            class="user-password__error"
+            *ngIf="f.submitted && (password.invalid || password.untouched)"
+          >
+            <span>Введите пароль от 8 до 20 символов</span>
+          </div>
+        </div>
+
+        <button class="submit-button" [disabled]="isLoading">register</button>
+
+        <div class="register-popup__redirect-login">Уже есть аккаунт? <span>Login</span></div>
+      </form>
+    </div>
+  </div>
+  <mat-spinner class="overlay__spinner-pos" *ngIf="isLoading"></mat-spinner>
+</div>
