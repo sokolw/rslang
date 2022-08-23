@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import TokenStorageService from '../../core/auth/token-storage.service';
 
 @Component({
   selector: 'app-user-account',
@@ -8,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export default class UserAccountComponent implements OnInit {
   dropdownMenu = false;
 
+  userName = '';
+
+  constructor(private tokenStorageService: TokenStorageService) {}
+
   ngOnInit(): void {
-    console.log('UserAccountComponent');
+    this.userName = this.tokenStorageService.getUsername();
+  }
+
+  logOut() {
+    this.tokenStorageService.signOut();
+    this.reloadPage();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }

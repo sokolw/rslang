@@ -9,7 +9,7 @@
           <li
             class="navigation__item"
             (mouseenter)="dropdownMenu = true"
-            [ngClass]="{navigation__item_active:dropdownMenu}"
+            [ngClass]="{ navigation__item_active: dropdownMenu }"
           >
             <a href="#">Мини-игры</a>
           </li>
@@ -25,7 +25,30 @@
         <span second>Спринт</span>
       </app-dropdown-menu>
     </div>
-    <app-authorization-buttons *ngIf="!authorized"></app-authorization-buttons>
+    <app-authorization-buttons
+      *ngIf="!authorized"
+      (typeOfAuthShown)="displayPopup($event)"
+    ></app-authorization-buttons>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <app-user-account *ngIf="authorized"></app-user-account>
   </div>
 </header>
+
+<app-popup-message
+  *ngIf="messagePopupDisplayed"
+  [message]="stateMessage"
+  (typeOfAuthShown)="displayPopup($event)"
+></app-popup-message>
+
+<app-register
+  *ngIf="registerPopupDisplayed"
+  (typeOfAuthShown)="displayPopup($event)"
+  (stateMessage)="displayPopupMessage($event)"
+></app-register>
+
+<app-login
+  *ngIf="loginPopupDisplayed"
+  (typeOfAuthShown)="displayPopup($event)"
+  (stateMessage)="displayPopupMessage($event)"
+  (stateAuth)="setAuth($event)"
+></app-login>
