@@ -1,5 +1,5 @@
 <div class="user-account" (mouseenter)="dropdownMenu = true" (mouseleave)="dropdownMenu = false">
-  <span class="user-account__name">username</span>
+  <span class="user-account__name">{{ userName }}</span>
   <div class="background-wrapper">
     <div class="user-pic user-account__pic">
       <img src="../../../assets/img/acc-img.png" class="user-pic__image" alt="user-pic" />
@@ -7,6 +7,6 @@
   </div>
   <app-dropdown-menu class="user-account__dropdown-menu" *ngIf="dropdownMenu">
     <span first>Главная</span>
-    <span second>LogOut</span>
+    <span second (click)="logOut()">LogOut</span>
   </app-dropdown-menu>
 </div>
