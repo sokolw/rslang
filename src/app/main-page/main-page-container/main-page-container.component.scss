@@ -1,0 +1,20 @@
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8rem;
+}
+
+.description__content {
+  width: 600px;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.description__image {
+  width: 359px;
+  height: 382px;
+}
