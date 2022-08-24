@@ -1,9 +1,22 @@
 <section class="description">
   <div class="description__content">
-    <h2><strong>LangDice</strong> - классное приложение для изучения английского языка. Даже мой енот тут
-      изучал английский.</h2>
+    <h2>
+      <strong>LangDice</strong> - классное приложение для изучения английского языка. Даже мой енот тут
+      изучал английский.
+    </h2>
   </div>
   <div class="description__image">
-    <img alt="dice" class="description__image" src="assets/img/dice.svg">
+    <img alt="dice" src="assets/img/dice.svg">
   </div>
+</section>
+
+<section class="advantages">
+  <h2>Преимущества нашего приложения</h2>
+  <ul class="advantages__cards">
+    <li class="advantages__card" *ngFor="let card of cards">
+      <img class="card__img" [src]="card.img" [alt]="card.title">
+      <h3 class="card__title">{{ card.title }}</h3>
+      <div class="card__description">{{ card.description }}</div>
+    </li>
+  </ul>
 </section>

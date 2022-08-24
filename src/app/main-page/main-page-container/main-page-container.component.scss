@@ -1,20 +1,70 @@
+img {
+  display: block;
+  width: 100%;
+}
+
 .description {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   column-gap: 8rem;
+  padding-bottom: 12rem;
 }
 
 .description__content {
   width: 600px;
 }
 
+.description__image {
+  cursor: pointer;
+
+  img {
+    transition: 0.2s;
+
+    &:hover {
+      filter: drop-shadow(4px 6px 8px black) hue-rotate(45deg);
+    }
+  }
+}
+
 h2 {
   font-size: 4rem;
   font-weight: 400;
+  margin-bottom: 5rem;
 }
 
-.description__image {
-  width: 359px;
-  height: 382px;
+.advantages {
+  text-align: center;
+}
+
+.card__title {
+  font-size: 2.5rem;
+  margin: 1.6rem 0;
+}
+
+.card__img {
+  height: 266px;
+}
+
+.card__description {
+  font-size: 1.6rem;
+}
+
+.advantages__cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6rem;
+  cursor: pointer;
+
+  .advantages__card {
+    width: 280px;
+    transition: 0.1s;
+
+    &:hover {
+      transform: scale(103%);
+    }
+  }
 }
