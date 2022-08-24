@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import SharedModule from './shared/shared.module';
+import TextBookModule from './text-book/text-book.module';
 import { httpInterceptorProviders } from './core/auth/auth-interceptor';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { httpInterceptorProviders } from './core/auth/auth-interceptor';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    TextBookModule,
   ],
   bootstrap: [AppComponent],
   providers: [httpInterceptorProviders],
