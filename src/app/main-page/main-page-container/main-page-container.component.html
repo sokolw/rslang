@@ -6,7 +6,7 @@
     </h2>
   </div>
   <div class="description__image">
-    <img alt="dice" src="assets/img/dice.svg">
+    <img alt="dice" src="assets/img/dice.svg" draggable="false">
   </div>
 </section>
 
@@ -14,9 +14,26 @@
   <h2>Преимущества нашего приложения</h2>
   <ul class="advantages__cards">
     <li class="advantages__card" *ngFor="let card of cards">
-      <img class="card__img" [src]="card.img" [alt]="card.title">
+      <img class="card__img" [src]="card.img" [alt]="card.title" draggable="false">
       <h3 class="card__title">{{ card.title }}</h3>
       <div class="card__description">{{ card.description }}</div>
+    </li>
+  </ul>
+</section>
+
+<section class="team">
+  <h2>Наша команда</h2>
+  <ul class="team__members">
+    <li class="team__member" *ngFor="let member of members">
+      <div class="member__avatar">
+        <img [src]="member.avatar" [alt]="member.name" draggable="false">
+      </div>
+      <h3 class="member__name">{{ member.name }}</h3>
+      <div class="member__role">{{ member.role }}</div>
+      <div class="member__description">{{ member.description }}</div>
+      <div class="member__github">
+        <a [href]="member.github" target="_blank"><span class="github__logo"></span>{{ member.nickName }}</a>
+      </div>
     </li>
   </ul>
 </section>

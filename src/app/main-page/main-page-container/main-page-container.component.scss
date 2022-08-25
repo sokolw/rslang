@@ -1,3 +1,5 @@
+@import '~src/scss/abstracts/variables';
+
 img {
   display: block;
   width: 100%;
@@ -9,7 +11,7 @@ img {
   justify-content: center;
   align-items: center;
   column-gap: 8rem;
-  padding-bottom: 12rem;
+  margin-bottom: 12rem;
 }
 
 .description__content {
@@ -32,10 +34,13 @@ h2 {
   font-size: 4rem;
   font-weight: 400;
   margin-bottom: 5rem;
+  color: white;
 }
 
 .advantages {
   text-align: center;
+  margin-bottom: 12rem;
+  color: $color-light-xl;
 }
 
 .card__title {
@@ -67,4 +72,79 @@ h2 {
       transform: scale(103%);
     }
   }
+}
+
+.team {
+  text-align: center;
+  color: $color-light-xl;
+  margin-bottom: 6rem;
+}
+
+.team__members {
+  list-style: none;
+  display: flex;
+  gap: 4rem;
+}
+
+.team__member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.member__avatar {
+  width: 200px;
+
+  img {
+    border-radius: 50%;
+    transition: $transition-link-hover;
+
+    &:hover {
+      filter: drop-shadow(2px 4px 6px $color-main);
+      cursor: pointer;
+      transform: scale(101%);
+    }
+  }
+}
+
+.member__name {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.member__role {
+  font-size: 2rem;
+}
+
+.member__description {
+  font-size: 1.6rem;
+}
+
+.member__github {
+  font-size: 2rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: currentColor;
+    transition: $transition-link-hover;
+
+    &:hover {
+      text-shadow: $text-shadow-hover;
+    }
+  }
+}
+
+.github__logo {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url('~src/assets/img/github.svg') no-repeat center/30px;
+}
+
+.advantages h2,
+.team h2 {
+  font-weight: 600;
 }
