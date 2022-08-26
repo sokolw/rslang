@@ -1,9 +1,9 @@
 <div class="container">
-  <div class='wrapper'>
-    <app-text-book-group-controls></app-text-book-group-controls>
+  <div class="wrapper">
+    <app-text-book-group-controls (groupChanged)="groupChanged($event)"></app-text-book-group-controls>
     <div class="scroll">
-      <app-text-book-word></app-text-book-word>
+      <app-text-book-word [words]="words"></app-text-book-word>
     </div>
-    <app-text-book-page-controls></app-text-book-page-controls>
+    <app-text-book-page-controls (pageChanged)="pageChanged($event)"></app-text-book-page-controls>
   </div>
 </div>
