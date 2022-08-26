@@ -1,1 +1,9 @@
-<p>text-book-group-controls works!</p>
+<mat-button-toggle-group class="group" (change)="getPaginatorData($event)" name="fontStyle" aria-label="Font Style">
+  <mat-button-toggle class="group__btn"
+                     [style.background-color]="groupStyle"
+                     *ngFor="let groupStyle of groupsStyles; let i = index"
+                     [value]=i>
+    Глава {{i+1}}
+  </mat-button-toggle>
+
+</mat-button-toggle-group>
