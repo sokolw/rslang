@@ -1,1 +1,39 @@
-<p>text-book-word works!</p>
+<div class="word" *ngFor="let word of words">
+  <div class="word__container">
+    <img class="word__img" [src]=word.image alt="">
+    <div class="word__description">
+      <div class="word__title">
+        <h4 class="word__name">{{word.word}}</h4>
+        <div class="word__name">{{word.transcription}}</div>
+        <button class="word__audio-btn" type="button">
+          <img class="word__audio" src='../../../assets/icons/startAudio.svg' alt="аудио">
+        </button>
+        <div class="word__btn-container">
+          <button class="word__btn">HARD</button>
+          <button class="word__btn">LEARNED</button>
+        </div>
+      </div>
+      <div class="word__name">{{word.wordTranslate}}</div>
+      <div class='word__row'>
+        <div class="word__text">
+          <div>{{word.textExample}}</div>
+          <div>{{word.textExampleTranslate}}</div>
+        </div>
+        <div class="stats">
+          <img class="stats__img" src='../../../assets/icons/like.svg' alt="угадано">
+          <p class="stats__count stats__count-like">100</p>
+        </div>
+      </div>
+      <div class='word__row'>
+        <div class="word__text">
+          <div>{{word.textMeaning}}</div>
+          <div>{{word.textMeaningTranslate}}</div>
+        </div>
+        <div class="stats" data-tooltip="Софийский собор">
+          <img class="stats__img" src='../../../assets/icons/dislike.svg' alt="неугадано">
+          <div class="stats__count stats__count-dislike">100</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

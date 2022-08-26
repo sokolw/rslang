@@ -1,0 +1,103 @@
+.word {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: rgb(236, 227, 227);
+  border-radius: 5px;
+
+  margin: 20px 50px;
+  padding: 30px;
+  background-color: #303030;
+
+  &__container {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__img {
+    width: 300px;
+    height: 200px;
+
+  }
+
+  &__name {
+    font-size: 20px;
+  }
+
+  &__audio-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: transparent;
+    background-color: transparent;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 35px -12px rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &__title {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%
+  }
+
+  &__btn-container{
+    display: flex;
+    gap: 36px;
+    font-size: 28px;
+    margin-left: auto;
+  }
+
+  &__btn{
+    padding: 10px;
+    cursor: pointer;
+    background-color: #444444;
+    border: transparent;
+  }
+
+  &__row{
+    display: flex;
+
+  }
+
+  &__text{
+    width: 40vw;
+  }
+}
+
+.stats{
+  display: flex;
+  margin-left: auto;
+  align-items:  center;
+  gap: 5px;
+
+  &__count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+  }
+
+  &__count-like{
+    background-color: green;
+  }
+
+  &__count-dislike{
+    background-color: red;
+  }
+}
