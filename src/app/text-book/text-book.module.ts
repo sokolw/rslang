@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -14,7 +15,7 @@ import TextBookWordComponent from './text-book-word/text-book-word.component';
     TextBookPageControlsComponent,
     TextBookWordComponent,
   ],
-  imports: [CommonModule, MatPaginatorModule, MatButtonToggleModule],
+  imports: [CommonModule, MatPaginatorModule, MatButtonToggleModule, NgbPaginationModule],
   exports: [TextBookPageContainerComponent],
 })
 export default class TextBookModule {}
