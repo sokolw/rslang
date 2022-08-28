@@ -2,45 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import ICard from './ICard';
 import MainCardsService from './main-cards.service';
-
-interface Member {
-  avatar: string;
-  name: string;
-  nickName: string;
-  role: string;
-  description: string;
-  github: string;
-}
-
-const mainMembersModel: Member[] = [
-  {
-    avatar: 'assets/img/avatars/sokolw-avatar.png',
-    name: 'Вадим Соколов',
-    nickName: 'Sokolw',
-    role: 'TeamLead. Developer',
-    description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
-    github: 'https://github.com/sokolw',
-  },
-  {
-    avatar: 'assets/img/avatars/pavelZabalotny-avatar.png',
-    name: 'Павел Заболотный',
-    nickName: 'PavelZabalotny',
-    role: 'Developer',
-    description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
-    github: 'https://github.com/PavelZabalotny',
-  },
-  {
-    avatar: 'assets/img/avatars/wex2-avatar.jpg',
-    name: 'Сергей Михеенко',
-    nickName: 'Wex2',
-    role: 'Developer',
-    description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
-    github: 'https://github.com/wex2',
-  },
-];
+import IMember from './IMember';
+import MainMembersService from './main-members.service';
 
 @Component({
   selector: 'app-main-page-container',
@@ -52,11 +15,12 @@ export default class MainPageContainerComponent implements OnInit, OnDestroy {
 
   cardsSubscriber!: Subscription;
 
-  members: Member[];
+  members: IMember[] = [];
 
-  constructor(private mainCardsService: MainCardsService) {
-    this.members = mainMembersModel;
-  }
+  constructor(
+    private mainCardsService: MainCardsService,
+    private mainMembersService: MainMembersService,
+  ) {}
 
   ngOnInit() {
     this.cardsSubscriber = this.mainCardsService.getMainCards().subscribe({
@@ -66,6 +30,9 @@ export default class MainPageContainerComponent implements OnInit, OnDestroy {
       error: (error) => {
         throw new Error(error);
       },
+    });
+    this.mainMembersService.getMembers().subscribe((members) => {
+      this.members = members;
     });
   }
 
