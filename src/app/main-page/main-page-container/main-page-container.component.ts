@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
-
-interface Card {
-  title: string;
-  description: string;
-  img: string;
-}
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import ICard from './ICard';
+import MainCardsService from './main-cards.service';
 
 interface Member {
   avatar: string;
@@ -15,40 +12,6 @@ interface Member {
   github: string;
 }
 
-const mainCardsModel: Card[] = [
-  {
-    title: 'Демо-режим',
-    description: 'Попробуйте возможности нашего приложения без регистрации',
-    img: 'assets/img/cards/show-card-1.png',
-  },
-  {
-    title: 'Простой интерфейс',
-    description: 'В пару кликов легко перейти в учебник, поиграть, посмотреть статистику',
-    img: 'assets/img/cards/show-card-2.png',
-  },
-  {
-    title: 'Учебник',
-    description: 'Уникальная подборка слов по уровням сложности',
-    img: 'assets/img/cards/show-card-3.png',
-  },
-  {
-    title: 'Игры',
-    description: 'Две игры на  запоминание слов: "Аудиовызов" и "Спринт"',
-    img: 'assets/img/cards/show-card-4.png',
-  },
-  {
-    title: 'Заметки',
-    description:
-      'После регистрации будет дооступен раздел "Сложные слова". Если не можешь запомнить слово, добавь его в заметки и вернись к нему позже',
-    img: 'assets/img/cards/show-card-5.png',
-  },
-  {
-    title: 'Статистика',
-    description:
-      'Отслеживай свои достижения в статистике. Так же она поможет определить каким словам необходимо уделить больше внимания',
-    img: 'assets/img/cards/show-card-6.png',
-  },
-];
 const mainMembersModel: Member[] = [
   {
     avatar: 'assets/img/avatars/sokolw-avatar.png',
@@ -84,13 +47,29 @@ const mainMembersModel: Member[] = [
   templateUrl: './main-page-container.component.html',
   styleUrls: ['./main-page-container.component.scss'],
 })
-export default class MainPageContainerComponent {
-  cards: Card[];
+export default class MainPageContainerComponent implements OnInit, OnDestroy {
+  cards: ICard[] = [];
+
+  cardsSubscriber!: Subscription;
 
   members: Member[];
 
-  constructor() {
-    this.cards = mainCardsModel;
+  constructor(private mainCardsService: MainCardsService) {
     this.members = mainMembersModel;
+  }
+
+  ngOnInit() {
+    this.cardsSubscriber = this.mainCardsService.getMainCards().subscribe({
+      next: (cards) => {
+        this.cards = cards;
+      },
+      error: (error) => {
+        throw new Error(error);
+      },
+    });
+  }
+
+  ngOnDestroy() {
+    this.cardsSubscriber.unsubscribe();
   }
 }
