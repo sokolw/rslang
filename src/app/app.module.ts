@@ -7,9 +7,10 @@ import AppComponent from './app.component';
 import SharedModule from './shared/shared.module';
 import { httpInterceptorProviders } from './core/auth/auth-interceptor';
 import MainPageModule from './main-page/main-page.module';
+import SprintGameComponent from './sprint-game/sprint-game.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SprintGameComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
