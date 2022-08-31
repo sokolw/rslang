@@ -1,0 +1,55 @@
+@import '~src/scss/abstracts/variables';
+
+$step-size: 30px;
+$timer-size: 80px;
+
+.sprint {
+  padding: 50px;
+  font-size: 3rem;
+  background: $color-dark;
+  display: flex;
+  justify-content: center;
+}
+
+.sprint__top-panel {
+  display: flex;
+  align-items: center;
+  column-gap: 140px;
+  //border: 1px solid red;
+}
+
+.top-panel__score {
+  width: 90px;
+  font-weight: bold;
+  color: #FF00B8;
+  text-align: center;
+  //outline: 1px dotted green;
+}
+
+.top-panel__step {
+  display: flex;
+  column-gap: 64px;
+  list-style: none;
+
+  .step__item {
+    width: $step-size;
+    height: $step-size;
+    background: $color-light-l;
+    border-radius: 50%;
+    
+    &-active {
+      background: $color-main;
+    }
+  }
+}
+
+.top-panel__timer {
+  width: $timer-size;
+  height: $timer-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 8px solid $color-main;
+  border-radius: 50%;
+  font-weight: bold;
+}
