@@ -27,6 +27,7 @@ export default class GameAudioCallContainerComponent implements OnDestroy {
   constructor(private gameAudioCallService: GameAudioCallService) {}
 
   ngOnDestroy(): void {
+    this.gameAudioCallService.clearInstance();
     this.subscription.unsubscribe();
   }
 
@@ -59,5 +60,9 @@ export default class GameAudioCallContainerComponent implements OnDestroy {
     this.gameAudioCallService.restart();
     this.getNextQuestion();
     this.isEndGame = false;
+  }
+
+  checkAnswer(id: number) {
+    this.gameAudioCallService.checkAnswer(id);
   }
 }

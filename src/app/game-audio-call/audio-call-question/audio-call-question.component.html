@@ -1,6 +1,11 @@
 <div class="audio-call-question">
   <div class="audio-call-question__audio-question">
-    <button class="button button_audio" (click)="callAudio()">
+    <button
+      class="button button_audio"
+      (click)="callAudio()"
+      (focus)="clearButtonFocus(button_audio)"
+      #button_audio
+    >
       <img src="../../../assets/icons/ico-audio-call.svg" alt="audio" />
     </button>
   </div>

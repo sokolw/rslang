@@ -27,6 +27,8 @@ export default class AudioCallResultComponent implements OnInit, OnDestroy {
 
   isLoading = false;
 
+  isRestarted = false;
+
   ngOnInit(): void {
     this.isLoading = true;
     this.subscription = this.gameAudioCallService.getGameResult().subscribe((result) => {
@@ -36,6 +38,9 @@ export default class AudioCallResultComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!this.isRestarted) {
+      this.gameAudioCallService.clearInstance();
+    }
     this.subscription.unsubscribe();
   }
 
@@ -52,6 +57,7 @@ export default class AudioCallResultComponent implements OnInit, OnDestroy {
   }
 
   restartGame() {
+    this.isRestarted = true;
     this.restartEvent.emit(true);
   }
 }

@@ -10,6 +10,7 @@
     [audioQuestion]="currentQuestion"
     *ngIf="isReadyData && !isEndGame"
     (nextQuestionEvent)="getNextQuestion()"
+    (answerIdEvent)="checkAnswer($event)"
   ></app-audio-call-question>
 
   <app-audio-call-result *ngIf="isEndGame" (restartEvent)="restartGame()"></app-audio-call-result>
