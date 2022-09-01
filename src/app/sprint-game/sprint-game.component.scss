@@ -4,6 +4,8 @@ $step-size: 30px;
 $timer-size: 80px;
 
 .sprint {
+  width: 800px;
+  margin: 0 auto;
   padding: 50px;
   font-size: 3rem;
   background: $color-dark;
@@ -92,4 +94,10 @@ $timer-size: 80px;
 
 .word__target {
   text-transform: uppercase;
+}
+
+.sprint__separator {
+  width: 100%;
+  height: 6px;
+  background: $color-main;
 }
