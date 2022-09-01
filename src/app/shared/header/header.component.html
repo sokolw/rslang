@@ -1,11 +1,11 @@
 <header class="header">
   <div class="wrapper header__wrapper">
     <div class="header__left">
-      <h1 class="header_logo"><a href="#">LangDice</a></h1>
+      <h1 class="header_logo"><a routerLink="/">LangDice</a></h1>
       <nav class="header__navigation">
         <ul class="navigation">
           <li class="navigation__item" [ngClass]="{ navigation__item_active: hasRoute('/') }">
-            <a href="/">Главная</a>
+            <a routerLink="/">Главная</a>
           </li>
           <li class="navigation__item"><a href="#">Учебник</a></li>
           <li
@@ -27,7 +27,7 @@
         <a
           class="dropdown-menu-link"
           [ngClass]="{ active: hasRoute('/game-audio-call') }"
-          href="/game-audio-call"
+          routerLink="/game-audio-call"
           first
           >Аудиовызов</a
         >

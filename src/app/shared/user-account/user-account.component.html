@@ -6,7 +6,7 @@
     </div>
   </div>
   <app-dropdown-menu class="user-account__dropdown-menu" *ngIf="dropdownMenu">
-    <a class="dropdown-menu-link" href="/" first>Главная</a>
+    <a class="dropdown-menu-link" routerLink="/" first>Главная</a>
     <a class="dropdown-menu-link" second (click)="logOut()">LogOut</a>
   </app-dropdown-menu>
 </div>
