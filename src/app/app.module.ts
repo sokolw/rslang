@@ -6,6 +6,7 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import SharedModule from './shared/shared.module';
 import { httpInterceptorProviders } from './core/auth/auth-interceptor';
+import GameAudioCallModule from './game-audio-call/game-audio-call.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { httpInterceptorProviders } from './core/auth/auth-interceptor';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    GameAudioCallModule,
   ],
   bootstrap: [AppComponent],
   providers: [httpInterceptorProviders],
