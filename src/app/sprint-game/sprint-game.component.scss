@@ -76,3 +76,20 @@ $timer-size: 80px;
     }
   }
 }
+
+.sprint__word {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.word__target,
+.word__translate {
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+
+.word__target {
+  text-transform: uppercase;
+}
