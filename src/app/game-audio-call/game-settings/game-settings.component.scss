@@ -1,0 +1,22 @@
+.game-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+
+  &__title{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  &__sub-title {
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
