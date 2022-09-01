@@ -1,0 +1,55 @@
+@import '../../../scss/abstracts/variables';
+
+.button_answer {
+  &[disabled] {
+    &:hover {
+      cursor: auto;
+      color: $color-light-xl;
+    }
+  }
+}
+
+.button {
+  background-color: $color-dark-s;
+  color: $color-light-xl;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%),
+    0px 1px 5px 0px rgb(0 0 0 / 12%);
+
+  &_answer {
+    padding: 1rem;
+  }
+
+  &_skip,
+  &_next {
+    padding: 2rem;
+  }
+
+  &.right {
+    background-color: green;
+  }
+
+  &.wrong {
+    background-color: red;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $color-main;
+  }
+}
+
+.audio-call-question__answers {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.audio-call-question {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
