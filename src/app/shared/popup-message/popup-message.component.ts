@@ -21,5 +21,10 @@ export default class PopupMessageComponent implements OnInit {
     if (buttonElem.className === 'button__close' || overlayElem.className === 'overlay') {
       this.typeOfAuthShown.emit(CLOSE);
     }
+    this.reloadPage();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }
