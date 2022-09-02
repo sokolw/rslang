@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import TokenStorageService from '../../core/auth/token-storage.service';
 
 @Component({
@@ -12,7 +11,7 @@ export default class UserAccountComponent implements OnInit {
 
   userName = '';
 
-  constructor(private tokenStorageService: TokenStorageService, private router: Router) {}
+  constructor(private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
     this.userName = this.tokenStorageService.getUsername();
@@ -24,7 +23,6 @@ export default class UserAccountComponent implements OnInit {
   }
 
   reloadPage() {
-    this.router.navigate(['/']);
-    window.location.reload();
+    window.location.replace('/');
   }
 }
