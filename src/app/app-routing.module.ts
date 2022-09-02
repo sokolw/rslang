@@ -6,12 +6,12 @@ import { GAME_AUDIO_CALL } from './core/constants/constants';
 import GameAudioCallContainerComponent from './game-audio-call/game-audio-call-container/game-audio-call-container.component';
 
 const routes: Routes = [
+  { path: GAME_AUDIO_CALL, component: GameAudioCallContainerComponent },
   { path: '', component: MainPageContainerComponent },
   {
     path: '**',
     component: PageNotFoundComponent,
   },
-  { path: GAME_AUDIO_CALL, component: GameAudioCallContainerComponent },
 ];
 
 @NgModule({
