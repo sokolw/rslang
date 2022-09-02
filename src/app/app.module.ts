@@ -6,6 +6,7 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import SharedModule from './shared/shared.module';
 import { httpInterceptorProviders } from './core/auth/auth-interceptor';
+import MainPageModule from './main-page/main-page.module';
 import GameAudioCallModule from './game-audio-call/game-audio-call.module';
 
 @NgModule({
@@ -16,6 +17,7 @@ import GameAudioCallModule from './game-audio-call/game-audio-call.module';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MainPageModule,
     GameAudioCallModule,
   ],
   bootstrap: [AppComponent],

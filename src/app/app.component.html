@@ -1,3 +1,7 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<main class="main">
+  <div class="wrapper main__wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</main>
 <app-footer *ngIf="!hasRoute('game-audio-call')"></app-footer>
