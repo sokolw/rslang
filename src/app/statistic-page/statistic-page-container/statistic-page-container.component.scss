@@ -1,3 +1,76 @@
+@import '../../../scss/abstracts/variables';
+
 .statistic {
   min-height: 50rem;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__overall,
+  &__games,
+  &__long-term {
+    padding: 1rem;
+    border: 1px solid $color-dark-s;
+    box-shadow: 0px 0px 50px 10px $color-dark-s inset;
+    margin-bottom: 1rem;
+  }
+
+  &__game {
+    background-color: $color-dark;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+}
+
+.overall__title,
+.games__title {
+  margin-bottom: 1rem;
+  color: $color-main;
+}
+
+.statistic-list {
+  list-style: none;
+
+  &__item {
+    margin-bottom: 0.4rem;
+    width: 40rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.games {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+}
+
+.game__title {
+  margin-bottom: 0.8rem;
+}
+
+.long-term {
+  &__title {
+    margin-bottom: 1rem;
+    color: $color-main;
+  }
+}
+
+.charts {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.chart {
+  &__title {
+    text-align: center;
+  }
 }
