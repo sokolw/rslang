@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { concatMap, catchError } from 'rxjs';
+import { concatMap, catchError, of } from 'rxjs';
 import UserPerDayStatsRest from './model/user-per-day-stats-rest';
 import { REMOTE_URL_API, USERS_ENDPOINT, STATISTICS_ENDPOINT } from '../../constants/constants';
 import TokenStorageService from '../../auth/token-storage.service';
@@ -193,5 +193,18 @@ export default class StatisticsService {
       [{ ...gameStats, percentagesCorrectAnswers: [gameStats.percentCorrectAnswers] }],
     );
     return userPerDayStats;
+  }
+
+  getUserStats() {
+    return this.getUserStatsPerDay().pipe(
+      concatMap((stats) => {
+        const longTermStats = JSON.parse(stats.optional.longTermStats) as Array<UserLongTermStats>;
+        const perDayStats = JSON.parse(stats.optional.perDayStats) as UserPerDayStats;
+        return of({ longTermStats, perDayStats });
+      }),
+      catchError(() => {
+        return of(null);
+      }),
+    );
   }
 }
