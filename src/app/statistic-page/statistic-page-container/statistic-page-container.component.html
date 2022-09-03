@@ -1,0 +1,64 @@
+<div class="statistic">
+  <div class="statistic__container" *ngIf="authorized && hasStats">
+    <div class="statistic__overall">
+      <h2 class="overall__title">Общая статистика за день</h2>
+      <ul class="statistic-list">
+        <li class="statistic-list__item">
+          <span>Количество новых слов:</span><span>{{ perStats.newWordsPerDay }}</span>
+        </li>
+        <li class="statistic-list__item">
+          <span>Количество изученных слов:</span><span>{{ perStats.learnedWordsPerDay }}</span>
+        </li>
+        <li class="statistic-list__item">
+          <span>Процент правильных ответов:</span
+          ><span>{{ perStats.overallPercentageCorrectAnswers }}%</span>
+        </li>
+      </ul>
+    </div>
+    <div class="statistic__games">
+      <h2 class="games__title">Статистика по играм за день</h2>
+      <div class="games__container">
+        <div class="statistic__game" *ngFor="let game of perStats.gamesStats">
+          <h3 class="game__title">{{ game.name }}</h3>
+          <ul class="statistic-list">
+            <li class="statistic-list__item">
+              <span>Количество новых слов:</span><span>{{ game.newWordsPerDay }}</span>
+            </li>
+            <li class="statistic-list__item">
+              <span>Процент правильных ответов:</span><span>{{ game.percentCorrectAnswers }}%</span>
+            </li>
+            <li class="statistic-list__item">
+              <span>Cамая длинная серия правильных ответов:</span
+              ><span>{{ game.longestStreakCorrectAnswers }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="long-term statistic__long-term">
+      <h2 class="long-term__title">Долгосрочная статистика за каждый день</h2>
+      <div class="charts charts__container">
+        <div class="chart chart__container" *ngFor="let chart of charts">
+          <h3 class="chart__title">{{ chart.chartName }}</h3>
+          <canvas
+            baseChart
+            width="400"
+            height="400"
+            [type]="'line'"
+            [data]="chart.chart"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+          >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="statistic__auth" *ngIf="!authorized">
+    <h1>Авторизируйтесь для отображения статистики!</h1>
+  </div>
+  <div class="statistic__has-stats" *ngIf="!hasStats && authorized && !isLoading">
+    <h1>У вас еще нет статистики. Поиграйте в мини-игры!</h1>
+  </div>
+  <mat-spinner *ngIf="authorized && isLoading"></mat-spinner>
+</div>

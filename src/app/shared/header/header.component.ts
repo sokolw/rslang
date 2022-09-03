@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CLOSE, LOGIN, REGISTER } from '../constants/constants';
 import AuthService from '../../core/auth/auth.service';
 import TokenStorageService from '../../core/auth/token-storage.service';
@@ -23,7 +24,11 @@ export default class HeaderComponent implements OnInit {
 
   stateMessage = '';
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) {}
+  constructor(
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     const userId = this.tokenStorage.getUserId();
@@ -69,5 +74,9 @@ export default class HeaderComponent implements OnInit {
 
   setAuth(state: boolean) {
     this.authorized = state;
+  }
+
+  hasRoute(route: string) {
+    return this.router.url.endsWith(route);
   }
 }

@@ -7,6 +7,8 @@ import AppComponent from './app.component';
 import SharedModule from './shared/shared.module';
 import { httpInterceptorProviders } from './core/auth/auth-interceptor';
 import MainPageModule from './main-page/main-page.module';
+import GameAudioCallModule from './game-audio-call/game-audio-call.module';
+import StatisticPageModule from './statistic-page/statistic-page.module';
 import SprintGameComponent from './sprint-game/sprint-game.component';
 
 @NgModule({
@@ -18,6 +20,8 @@ import SprintGameComponent from './sprint-game/sprint-game.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MainPageModule,
+    GameAudioCallModule,
+    StatisticPageModule,
   ],
   bootstrap: [AppComponent],
   providers: [httpInterceptorProviders],

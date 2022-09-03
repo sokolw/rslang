@@ -1,0 +1,90 @@
+@import '../../../scss/abstracts/variables';
+
+.audio-call-result {
+  background-color: $color-dark-s;
+  padding: 4rem;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  color: $color-light-xl;
+
+  &__container_answers {
+    max-height: 32rem;
+    overflow-y: auto;
+    overflow-x: visible;
+    margin-bottom: 3rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+.audio-call-result__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 3rem;
+  font-size: 2.2rem;
+}
+
+.wrong-list,
+.right-list {
+  padding-bottom: 2rem;
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.wrong-list {
+  &__title {
+    span {
+      color: red;
+    }
+  }
+}
+
+.right-list {
+  &__title {
+    span {
+      color: green;
+    }
+  }
+}
+
+.button {
+  &_audio {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    display: flex;
+    border-radius: 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 1), -23px 0 20px -23px rgba(0, 0, 0, 0.8),
+        23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+
+    transition: ease-in-out 0.4s;
+  }
+}
+
+.word {
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+}

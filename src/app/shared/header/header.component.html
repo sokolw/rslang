@@ -1,19 +1,24 @@
 <header class="header">
   <div class="wrapper header__wrapper">
     <div class="header__left">
-      <h1 class="header_logo"><a href="#">LangDice</a></h1>
+      <h1 class="header_logo"><a routerLink="/">LangDice</a></h1>
       <nav class="header__navigation">
         <ul class="navigation">
-          <li class="navigation__item navigation__item_active"><a href="#">Главная</a></li>
+          <li class="navigation__item" [ngClass]="{ navigation__item_active: hasRoute('/') }">
+            <a routerLink="/">Главная</a>
+          </li>
           <li class="navigation__item"><a href="#">Учебник</a></li>
           <li
             class="navigation__item"
             (mouseenter)="dropdownMenu = true"
-            [ngClass]="{ navigation__item_active: dropdownMenu }"
+            [ngClass]="{ navigation__item_active: dropdownMenu && !hasRoute('/game-audio-call') }"
+            [ngClass]="{ navigation__item_route: hasRoute('/game-audio-call') }"
           >
             <a href="#">Мини-игры</a>
           </li>
-          <li class="navigation__item"><a href="#">Статистика</a></li>
+          <li class="navigation__item" [ngClass]="{ navigation__item_active: hasRoute('/stats') }">
+            <a routerLink="/stats">Статистика</a>
+          </li>
         </ul>
       </nav>
       <app-dropdown-menu
@@ -21,8 +26,14 @@
         *ngIf="dropdownMenu"
         (mouseleave)="dropdownMenu = false"
       >
-        <span first>Аудиовызов</span>
-        <span second>Спринт</span>
+        <a
+          class="dropdown-menu-link"
+          [ngClass]="{ active: hasRoute('/game-audio-call') }"
+          routerLink="/game-audio-call"
+          first
+          >Аудиовызов</a
+        >
+        <a class="dropdown-menu-link" href="#" second>Спринт</a>
       </app-dropdown-menu>
     </div>
     <app-authorization-buttons
