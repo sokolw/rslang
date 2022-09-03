@@ -9,8 +9,8 @@ import {
   HARD_GROUP_VALUE,
   DEFAULT_COLLECTION_SIZE,
 } from '../../core/constants/constants';
-import TextBookService from '../../core/services/text-book.service';
-import IWords from '../../core/intefaces/iwords';
+import WordsService from '../../core/services/words-service/words.service';
+import Word from '../../core/services/words-service/word';
 import UserWordsService from '../../core/services/user-words.service';
 import TokenStorageService from '../../core/auth/token-storage.service';
 import { IAggregatedWords } from '../../core/intefaces/iaggregated-words';
@@ -22,7 +22,7 @@ import { IAggregatedWords } from '../../core/intefaces/iaggregated-words';
 })
 export default class TextBookPageContainerComponent implements OnInit {
   constructor(
-    private textBookService: TextBookService,
+    private wordsService: WordsService,
     private userWordsService: UserWordsService,
     private tokenStorageService: TokenStorageService,
   ) {}
@@ -65,7 +65,7 @@ export default class TextBookPageContainerComponent implements OnInit {
   }
 
   getWords(group: number, page: number) {
-    this.words = this.textBookService
+    this.words = this.wordsService
       .getWords(group, page)
       .pipe(
         switchMap((data) => {
@@ -125,7 +125,7 @@ export default class TextBookPageContainerComponent implements OnInit {
     );
   }
 
-  updateWordURL(word: IAggregatedWords | IWords) {
+  updateWordURL(word: IAggregatedWords | Word) {
     return {
       ...word,
       image: `${REMOTE_URL_API}/${word.image}`,

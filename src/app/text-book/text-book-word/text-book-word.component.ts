@@ -9,7 +9,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { catchError, Observable, Subscription, switchMap } from 'rxjs';
-import IWords from '../../core/intefaces/iwords';
+import Word from '../../core/services/words-service/word';
 import UserWordsService from '../../core/services/user-words.service';
 import IUserWords from '../../core/intefaces/iuser-words';
 import { IAggregatedWords } from '../../core/intefaces/iaggregated-words';
@@ -42,7 +42,7 @@ export default class TextBookWordComponent implements OnDestroy {
 
   @ViewChildren('audioU') audioElements!: QueryList<ElementRef<HTMLAudioElement>>;
 
-  async startAudio(word: IWords, audioU: HTMLAudioElement) {
+  async startAudio(word: Word, audioU: HTMLAudioElement) {
     const audio = audioU;
     if (this.currentAudioId === word.id) {
       audio.pause();
