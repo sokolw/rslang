@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { catchError, concatMap, forkJoin, Observable, of, switchMap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
-import { REMOTE_URL_API, LEARNED, EASY } from '../../core/constants/constants';
+import {
+  REMOTE_URL_API,
+  LEARNED,
+  EASY,
+  HARD_GROUP_VALUE,
+  DEFAULT_COLLECTION_SIZE,
+} from '../../core/constants/constants';
 import TextBookService from '../../core/services/text-book.service';
 import IWords from '../../core/intefaces/iwords';
 import UserWordsService from '../../core/services/user-words.service';
@@ -36,12 +42,12 @@ export default class TextBookPageContainerComponent implements OnInit {
   collectionSize: number = 0;
 
   ngOnInit(): void {
-    if (this.group === 6) {
+    if (this.group === HARD_GROUP_VALUE) {
       this.page = this.hardPage;
       this.getUserWords(this.hardPage);
     } else {
       this.getWords(this.group, this.page);
-      this.collectionSize = 600;
+      this.collectionSize = DEFAULT_COLLECTION_SIZE;
     }
     this.checkAuthentication();
   }
@@ -68,7 +74,7 @@ export default class TextBookPageContainerComponent implements OnInit {
               return this.userWordsService.getUserWord(item.id).pipe(
                 concatMap((wordResp) => {
                   const mergedWord: IAggregatedWords = {
-                    ...this.sortWord(item),
+                    ...this.updateWordURL(item),
                     userWord: {
                       difficulty: wordResp.difficulty,
                       optional: wordResp.optional,
@@ -77,7 +83,7 @@ export default class TextBookPageContainerComponent implements OnInit {
                   return of(mergedWord);
                 }),
                 catchError(() => {
-                  return of({ ...this.sortWord(item), ...this.getEmptyStatus() });
+                  return of({ ...this.updateWordURL(item), ...this.getEmptyStatus() });
                 }),
               );
             }),
@@ -101,7 +107,7 @@ export default class TextBookPageContainerComponent implements OnInit {
         return of(
           data[0].paginatedResults.map((item) => {
             return {
-              ...this.sortWord(item),
+              ...this.updateWordURL(item),
               // eslint-disable-next-line no-underscore-dangle
               id: item._id || item.id,
               userWord: {
@@ -119,7 +125,7 @@ export default class TextBookPageContainerComponent implements OnInit {
     );
   }
 
-  sortWord(word: IAggregatedWords | IWords) {
+  updateWordURL(word: IAggregatedWords | IWords) {
     return {
       ...word,
       image: `${REMOTE_URL_API}/${word.image}`,
@@ -148,7 +154,7 @@ export default class TextBookPageContainerComponent implements OnInit {
 
   pageChanged(event: PageEvent): void {
     this.isLearned = false;
-    if (this.group === 6) {
+    if (this.group === HARD_GROUP_VALUE) {
       this.hardPage = event.pageIndex;
       this.getUserWords(this.hardPage);
       this.saveItem(this.hardPage, 'hardPage');
@@ -162,14 +168,14 @@ export default class TextBookPageContainerComponent implements OnInit {
   groupChanged(group: MatButtonToggleChange): void {
     this.isLearned = false;
     this.group = group.value;
-    if (this.group === 6) {
+    if (this.group === HARD_GROUP_VALUE) {
       this.page = 0;
       this.saveItem(this.page, 'page');
       this.getUserWords(this.hardPage);
     } else {
       this.hardPage = 0;
       this.getWords(this.group, this.page);
-      this.collectionSize = 600;
+      this.collectionSize = DEFAULT_COLLECTION_SIZE;
     }
     this.saveItem(this.group, 'group');
   }

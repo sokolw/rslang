@@ -13,7 +13,7 @@ import IWords from '../../core/intefaces/iwords';
 import UserWordsService from '../../core/services/user-words.service';
 import IUserWords from '../../core/intefaces/iuser-words';
 import { IAggregatedWords } from '../../core/intefaces/iaggregated-words';
-import { HARD, EASY, LEARNED } from '../../core/constants/constants';
+import { HARD, EASY, LEARNED, HARD_GROUP_VALUE } from '../../core/constants/constants';
 
 @Component({
   selector: 'app-text-book-word',
@@ -78,7 +78,7 @@ export default class TextBookWordComponent implements OnDestroy {
 
   checkAllLearned() {
     let learnedWords = false;
-    if (this.group === 6) {
+    if (this.group === HARD_GROUP_VALUE) {
       return;
     }
     if (this.words !== null) {
@@ -135,7 +135,7 @@ export default class TextBookWordComponent implements OnDestroy {
         )
         .subscribe(),
     );
-    if (this.group === 6) {
+    if (this.group === HARD_GROUP_VALUE) {
       this.updateHardWords(word);
     }
   }
@@ -184,7 +184,7 @@ export default class TextBookWordComponent implements OnDestroy {
         )
         .subscribe(),
     );
-    if (this.group === 6) {
+    if (this.group === HARD_GROUP_VALUE) {
       this.updateHardWords(word);
     }
   }

@@ -13,3 +13,5 @@ export const HARD = 'hard';
 export const GAME_AUDIO_CALL = 'game-audio-call';
 export const STATS = 'stats';
 export const TEXT_BOOK = 'textbook';
+export const HARD_GROUP_VALUE = 6;
+export const DEFAULT_COLLECTION_SIZE = 600;
