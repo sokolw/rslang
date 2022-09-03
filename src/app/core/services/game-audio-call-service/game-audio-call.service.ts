@@ -93,7 +93,7 @@ export default class GameAudioCallService {
         audio: this.questions[this.currentQuestion].question,
       });
       this.resetStreakCorrectAnswers();
-      this.gameResult.totalIncorrect += +!false;
+      this.gameResult.totalIncorrect += 1;
     }
   }
 

@@ -1,0 +1,61 @@
+@import '~src/scss/abstracts/mixins';
+@import '~src/scss/abstracts/variables';
+
+.scroll {
+  height: 58vh;
+  overflow-y: scroll;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+}
+
+.group1{
+  @include box-shadow($color-gray);
+}
+
+.group2{
+  @include box-shadow($color-blue-soft);
+}
+.group3{
+  @include box-shadow($color-green-xl);
+}
+
+.group4{
+  @include box-shadow($color-yellow-xl);
+}
+
+.group5{
+  @include box-shadow($color-brown);
+}
+
+.group6{
+  @include box-shadow($color-brown-xl);
+}
+
+.group7{
+  @include box-shadow($color-red-xl);
+}
+
+.learned{
+  @include box-shadow($color-green-s);
+}
+
+.game__container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 1px;
+}
+.game__btn{
+  color: $color-light-xl;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: $color-gray-dark;
+  border: transparent;
+  padding: 10px 20px;
+  &:hover{
+    opacity: 0.8;
+  }
+}

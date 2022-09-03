@@ -7,12 +7,13 @@
           <li class="navigation__item" [ngClass]="{ navigation__item_active: hasRoute('/') }">
             <a routerLink="/">Главная</a>
           </li>
-          <li class="navigation__item"><a href="#">Учебник</a></li>
+          <li class="navigation__item" [ngClass]="{ navigation__item_active: hasRoute('/textbook') }">
+            <a routerLink="/textbook">Учебник</a></li>
           <li
             class="navigation__item"
-            (mouseenter)="dropdownMenu = true"
-            [ngClass]="{ navigation__item_active: dropdownMenu && !hasRoute('/game-audio-call') }"
-            [ngClass]="{ navigation__item_route: hasRoute('/game-audio-call') }"
+            (mouseenter)="showDropDown()"
+            [ngClass]="{ navigation__item_active: dropdownMenu && !hasRoute('/game-audio-call'),
+            navigation__item_route: hasRoute('/game-audio-call')}"
           >
             <a href="#">Мини-игры</a>
           </li>

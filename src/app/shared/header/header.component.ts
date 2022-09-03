@@ -79,4 +79,10 @@ export default class HeaderComponent implements OnInit {
   hasRoute(route: string) {
     return this.router.url.endsWith(route);
   }
+
+  showDropDown(){
+    if(!this.hasRoute('/textbook')){
+      this.dropdownMenu = true;
+    }
+  }
 }
