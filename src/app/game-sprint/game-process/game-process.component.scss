@@ -1,7 +1,6 @@
 @import '~src/scss/abstracts/variables';
 
 $step-size: 30px;
-$timer-size: 80px;
 
 .sprint {
   width: 800px;
@@ -44,17 +43,6 @@ $timer-size: 80px;
       background: $color-main;
     }
   }
-}
-
-.top-panel__timer {
-  width: $timer-size;
-  height: $timer-size;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 8px solid $color-main;
-  border-radius: 50%;
-  font-weight: bold;
 }
 
 .sprint__achieves {
