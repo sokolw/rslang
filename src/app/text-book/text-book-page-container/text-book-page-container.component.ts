@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { catchError, concatMap, forkJoin, Observable, of, switchMap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
-import { REMOTE_URL_API } from '../../core/constants/constants';
+import { REMOTE_URL_API, LEARNED, EASY } from '../../core/constants/constants';
 import TextBookService from '../../core/services/text-book.service';
 import IWords from '../../core/intefaces/iwords';
 import UserWordsService from '../../core/services/user-words.service';
@@ -87,7 +87,7 @@ export default class TextBookPageContainerComponent implements OnInit {
       .pipe(
         switchMap((data) => {
           if (data !== []) {
-            this.isLearned = data.every((item) => item.userWord.difficulty === 'learned');
+            this.isLearned = data.every((item) => item.userWord.difficulty === LEARNED);
           }
           return of(data);
         }),
@@ -132,7 +132,7 @@ export default class TextBookPageContainerComponent implements OnInit {
   getEmptyStatus() {
     return {
       userWord: {
-        difficulty: 'none',
+        difficulty: EASY,
         optional: {
           correct: 0,
           incorrect: 0,

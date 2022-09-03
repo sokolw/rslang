@@ -13,12 +13,7 @@ import IWords from '../../core/intefaces/iwords';
 import UserWordsService from '../../core/services/user-words.service';
 import IUserWords from '../../core/intefaces/iuser-words';
 import { IAggregatedWords } from '../../core/intefaces/iaggregated-words';
-
-const DIFFICULTY_HARD = 'hard';
-
-const DIFFICULTY_DEFAULT = 'easy';
-
-const DIFFICULTY_LEARNED = 'learned';
+import { HARD, EASY, LEARNED } from '../../core/constants/constants';
 
 @Component({
   selector: 'app-text-book-word',
@@ -106,30 +101,30 @@ export default class TextBookWordComponent implements OnDestroy {
         .pipe(
           switchMap((data) => {
             response = data;
-            if (response.difficulty === DIFFICULTY_HARD) {
-              this.updateWordDifficulty(word, btnHard, DIFFICULTY_DEFAULT);
+            if (response.difficulty === HARD) {
+              this.updateWordDifficulty(word, btnHard, EASY);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_DEFAULT}`,
+                difficulty: `${EASY}`,
               });
             }
-            if (response.difficulty === DIFFICULTY_LEARNED) {
-              this.updateWordDifficulty(word, btnHard, DIFFICULTY_HARD);
+            if (response.difficulty === LEARNED) {
+              this.updateWordDifficulty(word, btnHard, HARD);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_HARD}`,
+                difficulty: `${HARD}`,
               });
             }
-            if (response.difficulty === DIFFICULTY_DEFAULT) {
-              this.updateWordDifficulty(word, btnHard, DIFFICULTY_HARD);
+            if (response.difficulty === EASY) {
+              this.updateWordDifficulty(word, btnHard, HARD);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_HARD}`,
+                difficulty: `${HARD}`,
               });
             }
             return new Observable();
           }),
           catchError(() => {
-            this.updateWordDifficulty(word, btnHard, DIFFICULTY_HARD);
+            this.updateWordDifficulty(word, btnHard, HARD);
             return this.userWordsService.createUserWord(word.id, {
-              difficulty: `${DIFFICULTY_HARD}`,
+              difficulty: `${HARD}`,
               optional: {
                 correct: 0,
                 incorrect: 0,
@@ -155,30 +150,30 @@ export default class TextBookWordComponent implements OnDestroy {
         .pipe(
           switchMap((data) => {
             response = data;
-            if (response.difficulty === DIFFICULTY_LEARNED) {
-              this.updateWordDifficulty(word, btnLearned, DIFFICULTY_DEFAULT);
+            if (response.difficulty === LEARNED) {
+              this.updateWordDifficulty(word, btnLearned, EASY);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_DEFAULT}`,
+                difficulty: `${EASY}`,
               });
             }
-            if (response.difficulty === DIFFICULTY_HARD) {
-              this.updateWordDifficulty(word, btnLearned, DIFFICULTY_LEARNED);
+            if (response.difficulty === HARD) {
+              this.updateWordDifficulty(word, btnLearned, LEARNED);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_LEARNED}`,
+                difficulty: `${LEARNED}`,
               });
             }
-            if (response.difficulty === DIFFICULTY_DEFAULT) {
-              this.updateWordDifficulty(word, btnLearned, DIFFICULTY_LEARNED);
+            if (response.difficulty === EASY) {
+              this.updateWordDifficulty(word, btnLearned, LEARNED);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_LEARNED}`,
+                difficulty: `${LEARNED}`,
               });
             }
             return new Observable();
           }),
           catchError(() => {
-            this.updateWordDifficulty(word, btnLearned, DIFFICULTY_LEARNED);
+            this.updateWordDifficulty(word, btnLearned, LEARNED);
             return this.userWordsService.createUserWord(word.id, {
-              difficulty: `${DIFFICULTY_LEARNED}`,
+              difficulty: `${LEARNED}`,
               optional: {
                 correct: 0,
                 incorrect: 0,

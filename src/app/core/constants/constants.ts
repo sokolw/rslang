@@ -9,6 +9,7 @@ export const STATISTICS_ENDPOINT = '/statistics';
 export const MAX_STREAK_TO_SET_LEARN = 3;
 export const LEARNED = 'learned';
 export const EASY = 'easy';
+export const HARD = 'hard';
 export const GAME_AUDIO_CALL = 'game-audio-call';
 export const STATS = 'stats';
 export const TEXT_BOOK = 'textbook';
