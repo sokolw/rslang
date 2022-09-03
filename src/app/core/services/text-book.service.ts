@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { REMOTE_URL_API } from '../constants/constants';
-import IWords from '../intefaces/IWords';
+import IWords from '../intefaces/iwords';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -11,18 +11,16 @@ const httpOptions = {
   providedIn: 'root',
 })
 export default class TextBookService {
-  page: number = 0;
-
-  group: number = 0;
-
-  constructor(private http: HttpClient) {
-    this.getWords(this.group, this.page);
-  }
+  constructor(private http: HttpClient) {}
 
   getWords(group: number, page: number) {
     return this.http.get<IWords[]>(
       `${REMOTE_URL_API}/words?group=${group}&page=${page}`,
       httpOptions,
     );
+  }
+
+  getWord(wordId: string) {
+    return this.http.get<IWords>(`${REMOTE_URL_API}/words/${wordId}`, httpOptions);
   }
 }
