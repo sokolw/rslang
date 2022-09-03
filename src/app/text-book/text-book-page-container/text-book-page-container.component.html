@@ -1,9 +1,34 @@
 <div class="container">
-  <div class="wrapper">
-    <app-text-book-group-controls (groupChanged)="groupChanged($event)"></app-text-book-group-controls>
-    <div class="scroll">
-      <app-text-book-word [words]="words"></app-text-book-word>
+  <div class="wrapper" [ngClass]="{
+  'group1':this.group===0,
+  'group2':this.group===1,
+  'group3':this.group===2,
+  'group4':this.group===3,
+  'group5':this.group===4,
+  'group6':this.group===5,
+  'group7':this.group===6,
+  'learned':this.isLearned}">
+    <div class="game__container">
+      <button class="game__btn" routerLink="/game-audio-call" [queryParams]="{'group':this.group,'page':this.page}">Аудиовызов</button>
+      <button class="game__btn" routerLink="/game-sprint" [queryParams]="{'group':this.group,'page':this.page}">Спринт</button>
     </div>
-    <app-text-book-page-controls (pageChanged)="pageChanged($event)"></app-text-book-page-controls>
+    <app-text-book-group-controls class="flex"
+                                  (groupChanged)="groupChanged($event)"
+                                  [isAuthorized]="isAuthorized">
+
+    </app-text-book-group-controls>
+    <div class="scroll">
+      <app-text-book-word (learnedWord)="setLearnedPage($event)"
+                          [words]="words | async"
+                          [isAuthorized]="isAuthorized"
+                          [group]='group'>
+
+      </app-text-book-word>
+    </div>
+    <app-text-book-page-controls (pageChanged)="pageChanged($event)"
+                                 [page]="page"
+                                 [collectionSize]="collectionSize" [isLearned]="isLearned">
+
+    </app-text-book-page-controls>
   </div>
 </div>
