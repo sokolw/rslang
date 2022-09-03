@@ -16,7 +16,7 @@ import { IAggregatedWords } from '../../core/intefaces/iaggregated-words';
 
 const DIFFICULTY_HARD = 'hard';
 
-const DIFFICULTY_NONE = 'none';
+const DIFFICULTY_DEFAULT = 'easy';
 
 const DIFFICULTY_LEARNED = 'learned';
 
@@ -107,9 +107,9 @@ export default class TextBookWordComponent implements OnDestroy {
           switchMap((data) => {
             response = data;
             if (response.difficulty === DIFFICULTY_HARD) {
-              this.updateWordDifficulty(word, btnHard, DIFFICULTY_NONE);
+              this.updateWordDifficulty(word, btnHard, DIFFICULTY_DEFAULT);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_NONE}`,
+                difficulty: `${DIFFICULTY_DEFAULT}`,
               });
             }
             if (response.difficulty === DIFFICULTY_LEARNED) {
@@ -118,7 +118,7 @@ export default class TextBookWordComponent implements OnDestroy {
                 difficulty: `${DIFFICULTY_HARD}`,
               });
             }
-            if (response.difficulty === DIFFICULTY_NONE) {
+            if (response.difficulty === DIFFICULTY_DEFAULT) {
               this.updateWordDifficulty(word, btnHard, DIFFICULTY_HARD);
               return this.userWordsService.updateUserWord(word.id, {
                 difficulty: `${DIFFICULTY_HARD}`,
@@ -156,9 +156,9 @@ export default class TextBookWordComponent implements OnDestroy {
           switchMap((data) => {
             response = data;
             if (response.difficulty === DIFFICULTY_LEARNED) {
-              this.updateWordDifficulty(word, btnLearned, DIFFICULTY_NONE);
+              this.updateWordDifficulty(word, btnLearned, DIFFICULTY_DEFAULT);
               return this.userWordsService.updateUserWord(word.id, {
-                difficulty: `${DIFFICULTY_NONE}`,
+                difficulty: `${DIFFICULTY_DEFAULT}`,
               });
             }
             if (response.difficulty === DIFFICULTY_HARD) {
@@ -167,7 +167,7 @@ export default class TextBookWordComponent implements OnDestroy {
                 difficulty: `${DIFFICULTY_LEARNED}`,
               });
             }
-            if (response.difficulty === DIFFICULTY_NONE) {
+            if (response.difficulty === DIFFICULTY_DEFAULT) {
               this.updateWordDifficulty(word, btnLearned, DIFFICULTY_LEARNED);
               return this.userWordsService.updateUserWord(word.id, {
                 difficulty: `${DIFFICULTY_LEARNED}`,
