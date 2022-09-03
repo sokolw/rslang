@@ -39,7 +39,7 @@ export default class WordsService {
     if (group === HARD_GROUP_VALUE) {
       return this.getHardWordForGame(wordCount);
     }
-    if (group && page) {
+    if (group !== undefined && page !== undefined) {
       return this.getExtraWords(wordCount, group, page);
     }
 
