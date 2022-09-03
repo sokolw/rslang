@@ -11,3 +11,4 @@ export const LEARNED = 'learned';
 export const EASY = 'easy';
 export const GAME_AUDIO_CALL = 'game-audio-call';
 export const STATS = 'stats';
+export const GAME_SPRINT = 'game-sprint';
