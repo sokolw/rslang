@@ -113,7 +113,7 @@ export default class TextBookWordComponent implements OnDestroy {
                 difficulty: `${HARD}`,
               });
             }
-            if (response.difficulty === EASY) {
+            if (response.difficulty !== LEARNED && response.difficulty !== HARD) {
               this.updateWordDifficulty(word, btnHard, HARD);
               return this.userWordsService.updateUserWord(word.id, {
                 difficulty: `${HARD}`,
@@ -162,7 +162,7 @@ export default class TextBookWordComponent implements OnDestroy {
                 difficulty: `${LEARNED}`,
               });
             }
-            if (response.difficulty === EASY) {
+            if (response.difficulty !== LEARNED && response.difficulty !== HARD) {
               this.updateWordDifficulty(word, btnLearned, LEARNED);
               return this.userWordsService.updateUserWord(word.id, {
                 difficulty: `${LEARNED}`,
