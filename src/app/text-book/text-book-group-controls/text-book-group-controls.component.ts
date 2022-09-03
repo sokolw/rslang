@@ -11,7 +11,7 @@ export default class TextBookGroupControlsComponent {
 
   @Output() groupChanged = new EventEmitter<MatButtonToggleChange>();
 
-  groupsStyles = ['group1', 'group2', 'group3', 'group4', 'group5', 'group6'];
+  groupsStyles = ['group-1', 'group-2', 'group-3', 'group-4', 'group-5', 'group-6'];
 
   getPaginatorData(event: MatButtonToggleChange) {
     this.groupChanged.emit(event);
