@@ -9,10 +9,10 @@ import { httpInterceptorProviders } from './core/auth/auth-interceptor';
 import MainPageModule from './main-page/main-page.module';
 import GameAudioCallModule from './game-audio-call/game-audio-call.module';
 import StatisticPageModule from './statistic-page/statistic-page.module';
-import SprintGameComponent from './sprint-game/sprint-game.component';
+import GameSprintModule from './game-sprint/game-sprint.module';
 
 @NgModule({
-  declarations: [AppComponent, SprintGameComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +22,7 @@ import SprintGameComponent from './sprint-game/sprint-game.component';
     MainPageModule,
     GameAudioCallModule,
     StatisticPageModule,
+    GameSprintModule,
   ],
   bootstrap: [AppComponent],
   providers: [httpInterceptorProviders],
