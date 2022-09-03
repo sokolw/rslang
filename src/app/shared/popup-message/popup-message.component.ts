@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CLOSE } from '../constants/constants';
 
 @Component({
@@ -7,6 +8,8 @@ import { CLOSE } from '../constants/constants';
   styleUrls: ['./popup-message.component.scss'],
 })
 export default class PopupMessageComponent implements OnInit {
+  constructor(private router: Router) {}
+
   @Input() message = '';
 
   @Output() typeOfAuthShown: EventEmitter<string> = new EventEmitter<string>();
@@ -21,5 +24,15 @@ export default class PopupMessageComponent implements OnInit {
     if (buttonElem.className === 'button__close' || overlayElem.className === 'overlay') {
       this.typeOfAuthShown.emit(CLOSE);
     }
+    this.reloadCurrentRoute();
+  }
+
+  reloadCurrentRoute() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    const currentUrl = `${this.router.url}?`;
+    this.router.navigateByUrl(currentUrl).then(() => {
+      this.router.navigated = false;
+      this.router.navigate([this.router.url]);
+    });
   }
 }
