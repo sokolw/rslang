@@ -7,6 +7,9 @@ import AppComponent from './app.component';
 import SharedModule from './shared/shared.module';
 import TextBookModule from './text-book/text-book.module';
 import { httpInterceptorProviders } from './core/auth/auth-interceptor';
+import MainPageModule from './main-page/main-page.module';
+import GameAudioCallModule from './game-audio-call/game-audio-call.module';
+import StatisticPageModule from './statistic-page/statistic-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +19,9 @@ import { httpInterceptorProviders } from './core/auth/auth-interceptor';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MainPageModule,
+    GameAudioCallModule,
+    StatisticPageModule,
     TextBookModule,
   ],
   bootstrap: [AppComponent],

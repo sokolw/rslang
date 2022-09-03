@@ -1,0 +1,55 @@
+<div class="audio-call-result" *ngIf="!isLoading">
+  <div class="audio-call-result__head">
+    <span class="total-points">Заработано очков: {{ gameResult.totalPoints }}</span>
+    <span class="total-exp">Получено опыта: {{ gameResult.totalExperience }}</span>
+  </div>
+  <div class="audio-call-result__container">
+    <div class="audio-call-result__container_answers">
+      <div class="wrong-list">
+        <div class="wrong-list__title">
+          Не правильные ответы: <span>{{ gameResult.totalIncorrect }}</span>
+        </div>
+        <div class="wrong-list__container">
+          <div class="word" *ngFor="let word_item of gameResult.wordsWithStatus">
+            <div class="word__item" *ngIf="!word_item.isCorrect">
+              <button class="button button_audio" (click)="callAudio(word_item)">
+                <img src="../../../assets/icons/audio-word.svg" alt="audio-word" />
+              </button>
+              <span class="word__content">{{ word_item.word }}</span>
+              <span class="word__transcription">{{ word_item.transcription }}</span>
+              <span>-</span>
+              <span class="word__translate">{{ word_item.wordTranslate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-list">
+        <div class="right-list__title">
+          Правильные ответы: <span>{{ gameResult.totalCorrect }}</span>
+        </div>
+        <div class="right-list__container">
+          <div class="word" *ngFor="let word_item of gameResult.wordsWithStatus">
+            <div class="word__item" *ngIf="word_item.isCorrect">
+              <button class="button button_audio" (click)="callAudio(word_item)">
+                <img src="../../../assets/icons/audio-word.svg" alt="audio-word" />
+              </button>
+              <span class="word__content">{{ word_item.word }}</span>
+              <span class="word__transcription">{{ word_item.transcription }}</span>
+              <span>-</span>
+              <span class="word__translate">{{ word_item.wordTranslate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="audio-call-result__buttons">
+      <button class="button button_exit" mat-raised-button (click)="redirectToMain()">
+        Закончить игру
+      </button>
+      <button class="button button_repeate" mat-raised-button (click)="restartGame()">
+        Повторим?
+      </button>
+    </div>
+  </div>
+</div>
+<mat-spinner *ngIf="isLoading"></mat-spinner>

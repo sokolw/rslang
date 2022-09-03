@@ -1,0 +1,31 @@
+<div class="audio-call-question">
+  <div class="audio-call-question__audio-question">
+    <button
+      class="button button_audio"
+      (click)="callAudio()"
+      (focus)="clearButtonFocus(button_audio)"
+      #button_audio
+    >
+      <img src="../../../assets/icons/ico-audio-call.svg" alt="audio" />
+    </button>
+  </div>
+  <div class="audio-call-question__answers" #buttons>
+    <button
+      class="button button_answer"
+      *ngFor="let answer of audioQuestion.answers; let i = index"
+      [ngClass]="{
+        right: isAnswered && (answerId === i || answerId !== i) && answer.isCorrect,
+        wrong: isAnswered && answerId === i && !answer.isCorrect
+      }"
+      (click)="setAnswer(answer)"
+      #answer
+      [disabled]="isAnswered"
+    >
+      {{ i + 1 }}. {{ answer.answer }}
+    </button>
+  </div>
+  <button class="button button_skip" (click)="skipQuestion()" *ngIf="!isAnswered">Не знаю</button>
+  <button class="button button_next" (click)="nextQuestion()" *ngIf="isAnswered">
+    Следующее слово
+  </button>
+</div>

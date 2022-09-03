@@ -23,6 +23,6 @@ export default class UserAccountComponent implements OnInit {
   }
 
   reloadPage() {
-    window.location.reload();
+    window.location.replace('/');
   }
 }

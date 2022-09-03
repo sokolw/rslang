@@ -1,0 +1,17 @@
+<div class="game-audio-call">
+  <app-game-settings
+    (selectedLevel)="prepareGame($event)"
+    *ngIf="!isLevelSelected"
+  ></app-game-settings>
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <app-audio-call-question
+    [audioQuestion]="currentQuestion"
+    *ngIf="isReadyData && !isEndGame"
+    (nextQuestionEvent)="getNextQuestion()"
+    (answerIdEvent)="checkAnswer($event)"
+  ></app-audio-call-question>
+
+  <app-audio-call-result *ngIf="isEndGame" (restartEvent)="restartGame()"></app-audio-call-result>
+</div>

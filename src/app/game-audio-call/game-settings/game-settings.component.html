@@ -1,0 +1,18 @@
+<div class="game-settings">
+  <h2 class="game-settings__title">Настройки игры</h2>
+  <h3 class="game-settings__sub-title">Выберите сложность игры</h3>
+  <div class="game-settings__list">
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>Уровень</mat-label>
+      <mat-select (valueChange)="setCurrentLevel($event)">
+        <mat-option *ngFor="let level of levels" [value]="level.value">
+          {{ level.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="game-settings__buttons">
+    <button mat-raised-button (click)="redirectToMain()">Выйти</button>
+    <button mat-raised-button [disabled]="!levelSelected" (click)="setLevel()">Старт</button>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 @import '../../../scss/abstracts/variables';
 
 .header__wrapper {
-  padding: 6rem 0;
+  padding: 2rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,8 +58,16 @@
     transition: ease-in-out 0.3s;
   }
 
-  .navigation__item_active {
+  .navigation__item_active,
+  .navigation__item_route {
     text-shadow: $color-main 1px 1px 10px, $color-main -1px -1px 10px, $color-main -1px 1px 10px,
       $color-main 1px -1px 10px;
+  }
+}
+
+.dropdown-menu-link {
+  color: $color-light-xl;
+  &.active {
+    text-shadow: 0 3px 4px rgba(255, 242, 169, 0.795);
   }
 }
