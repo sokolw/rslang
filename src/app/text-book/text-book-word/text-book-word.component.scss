@@ -1,16 +1,23 @@
+@import '~src/scss/abstracts/variables';
+
 .word {
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
-  color: rgb(236, 227, 227);
+  color: $color-light-xl;
   border-radius: 5px;
 
-  margin: 20px 50px;
-  padding: 30px;
-  background-color: #303030;
+  margin: 2rem 5rem;
+  padding: 2.7rem;
+  background-color: $color-gray-dark;
 
   &__container {
     display: flex;
     gap: 30px;
+  }
+
+  &__img-container {
+    width: 300px;
+    height: 200px;
   }
 
   &__img {
@@ -44,6 +51,14 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
   }
 
   &__description {
@@ -58,11 +73,10 @@
     display: flex;
     gap: 36px;
     font-size: 28px;
-    margin-left: auto;
   }
 
   &__btn{
-    padding: 10px;
+    padding: 0 10px;
     cursor: pointer;
     background-color: #444444;
     border: transparent;
@@ -70,7 +84,7 @@
 
   &__row{
     display: flex;
-
+    justify-content: space-between;
   }
 
   &__text{
@@ -80,7 +94,6 @@
 
 .stats{
   display: flex;
-  margin-left: auto;
   align-items:  center;
   gap: 5px;
 
@@ -94,10 +107,67 @@
   }
 
   &__count-like{
-    background-color: green;
+    background-color: $color-green;
   }
 
   &__count-dislike{
-    background-color: red;
+    background-color: $color-red;
+  }
+}
+
+.hard-background{
+  background-color: $color-pink-intense;
+}
+
+.learned-background{
+  background-color: $color-green-l;
+}
+
+.hard-btn{
+  background-color: $color-red;
+}
+
+.learned-btn{
+  background-color: $color-green;
+}
+
+@media screen and (min-width: 721px) and (max-width: 1100px){
+  .word{
+    &__container{
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px){
+  .word{
+    &__container{
+      flex-direction: column;
+    }
+
+    &__title{
+      flex-direction: column;
+    }
+
+    &__btn-container{
+      margin: 0 auto;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    &__img-container{
+      margin: 0 auto;
+      width: 250px;
+      height: 160px;
+    }
+
+    &__img{
+      width: 250px;
+      height: 160px;
+    }
+  }
+
+  .stats{
+    flex-direction: column;
   }
 }
