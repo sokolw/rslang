@@ -24,6 +24,7 @@
                           [group]='group'>
 
       </app-text-book-word>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
     </div>
     <app-text-book-page-controls (pageChanged)="pageChanged($event)"
                                  [page]="page"

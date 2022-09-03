@@ -39,9 +39,12 @@ export default class TextBookPageContainerComponent implements OnInit {
 
   isAuthorized = false;
 
+  isLoading = false;
+
   collectionSize: number = 0;
 
   ngOnInit(): void {
+    this.isLoading = true;
     if (this.group === HARD_GROUP_VALUE) {
       this.page = this.hardPage;
       this.getUserWords(this.hardPage);
@@ -92,6 +95,7 @@ export default class TextBookPageContainerComponent implements OnInit {
       )
       .pipe(
         switchMap((data) => {
+          this.isLoading = false;
           if (data !== []) {
             this.isLearned = data.every((item) => item.userWord.difficulty === LEARNED);
           }
@@ -104,6 +108,7 @@ export default class TextBookPageContainerComponent implements OnInit {
     this.words = this.userWordsService.aggregatedWords(hardPage).pipe(
       switchMap((data) => {
         this.collectionSize = data[0].totalCount[0]?.count;
+        this.isLoading = false;
         return of(
           data[0].paginatedResults.map((item) => {
             return {
@@ -153,6 +158,7 @@ export default class TextBookPageContainerComponent implements OnInit {
   }
 
   pageChanged(event: PageEvent): void {
+    this.isLoading = true;
     this.isLearned = false;
     if (this.group === HARD_GROUP_VALUE) {
       this.hardPage = event.pageIndex;
@@ -166,6 +172,7 @@ export default class TextBookPageContainerComponent implements OnInit {
   }
 
   groupChanged(group: MatButtonToggleChange): void {
+    this.isLoading = true;
     this.isLearned = false;
     this.group = group.value;
     if (this.group === HARD_GROUP_VALUE) {
