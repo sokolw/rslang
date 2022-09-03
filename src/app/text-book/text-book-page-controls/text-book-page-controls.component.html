@@ -1,1 +1,6 @@
-<p>text-book-page-controls works!</p>
+<mat-paginator [length]="collectionSize"
+               [pageSize]="20"
+               [pageIndex]="page"
+               [hidePageSize]="true"
+               (page)="getPageData($event)" [ngClass]="{'isLearned':this.isLearned}">
+</mat-paginator>
