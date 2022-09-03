@@ -3,3 +3,7 @@
     @content;
   }
 }
+
+@mixin box-shadow($color){
+  box-shadow: 0 0 25px 16px $color inset;
+}
