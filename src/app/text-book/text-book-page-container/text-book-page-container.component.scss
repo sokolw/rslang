@@ -1,12 +1,17 @@
 @import '~src/scss/abstracts/mixins';
 @import '~src/scss/abstracts/variables';
 
+.wrapper{
+  border-radius: 20px;
+}
+
 .scroll {
   height: 58vh;
   overflow-y: scroll;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  border-radius: 50px;
 }
 
 .flex{
@@ -61,4 +66,8 @@
   &:hover{
     opacity: 0.8;
   }
+}
+
+.spinner{
+  align-self: center;
 }
