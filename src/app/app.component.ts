@@ -11,7 +11,7 @@ export default class AppComponent {
 
   constructor(private router: Router) {}
 
-  hasRoute(route: string) {
-    return this.router.url.includes(route);
+  hasRoute(route: string[]) {
+    return route.includes(this.router.url.substring(1));
   }
 }
