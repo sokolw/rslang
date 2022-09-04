@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GAME_AUDIO_CALL, GAME_SPRINT } from './core/constants/constants';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export default class AppComponent {
   title = 'rslang';
 
-  disableFooterInRoutes = ['game-audio-call', 'game-sprint'];
+  disableFooterInRoutes = [GAME_AUDIO_CALL, GAME_SPRINT];
 
   constructor(private router: Router) {}
 
