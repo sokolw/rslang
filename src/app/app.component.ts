@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 export default class AppComponent {
   title = 'rslang';
 
+  disableFooterInRoutes = ['game-audio-call', 'game-sprint'];
+
   constructor(private router: Router) {}
 
-  hasRoute(route: string[]) {
-    return route.includes(this.router.url.substring(1));
+  hasRoute(routes: string[]) {
+    return routes.some((route) => new RegExp(route).test(this.router.url));
   }
 }
