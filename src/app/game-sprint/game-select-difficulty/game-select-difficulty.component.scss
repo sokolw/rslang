@@ -1,0 +1,62 @@
+@import '~src/scss/abstracts/variables';
+
+.sprint-select-difficulty {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 50px;
+  background: $color-dark-l;
+  border: 1px solid $color-main;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 80px;
+}
+
+.difficulty {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.difficulty__item {
+  padding: 30px 40px;
+  font-size: 3rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: $transition-link-hover;
+
+  &:hover {
+    filter: invert(1);
+  }
+}
+
+.color-one {
+  background: #303030;
+}
+
+.color-two {
+  background: #5F4444;
+}
+
+.color-three {
+  background: #934848;
+}
+
+.color-four {
+  background: #B93E3E;
+}
+
+.color-five {
+  background: #D52525;
+}
+
+.color-six {
+  background: #FF0000;
+}
