@@ -8,6 +8,7 @@ import {
   EASY,
   HARD_GROUP_VALUE,
   DEFAULT_COLLECTION_SIZE,
+  HARD,
 } from '../../core/constants/constants';
 import WordsService from '../../core/services/words-service/words.service';
 import Word from '../../core/services/words-service/word';
@@ -97,7 +98,9 @@ export default class TextBookPageContainerComponent implements OnInit {
         switchMap((data) => {
           this.isLoading = false;
           if (data !== []) {
-            this.isLearned = data.every((item) => item.userWord.difficulty === LEARNED);
+            this.isLearned = data.every(
+              (item) => item.userWord.difficulty === LEARNED || item.userWord.difficulty === HARD,
+            );
           }
           return of(data);
         }),

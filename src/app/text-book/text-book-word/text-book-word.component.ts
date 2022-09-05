@@ -82,7 +82,9 @@ export default class TextBookWordComponent implements OnDestroy {
       return;
     }
     if (this.words !== null) {
-      learnedWords = this.words.every((word) => word.userWord.difficulty === 'learned');
+      learnedWords = this.words.every(
+        (word) => word.userWord.difficulty === LEARNED || word.userWord.difficulty === HARD,
+      );
     }
     if (learnedWords) {
       this.learnedWord.emit(true);
