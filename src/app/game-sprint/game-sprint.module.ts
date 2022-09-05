@@ -4,6 +4,7 @@ import GameSprintContainerComponent from './game-sprint-container/game-sprint-co
 import GameProcessComponent from './game-process/game-process.component';
 import TimerComponent from './game-process/timer/timer.component';
 import GameSelectDifficultyComponent from './game-select-difficulty/game-select-difficulty.component';
+import GameAudioCallModule from '../game-audio-call/game-audio-call.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import GameSelectDifficultyComponent from './game-select-difficulty/game-select-
     TimerComponent,
     GameSelectDifficultyComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, GameAudioCallModule],
 
   exports: [GameSprintContainerComponent],
 })
