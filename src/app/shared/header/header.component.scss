@@ -48,6 +48,9 @@
 
     a {
       color: $color-light-l;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &:hover {
