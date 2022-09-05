@@ -1,0 +1,53 @@
+@import '~src/scss/abstracts/variables';
+
+.sprint-select-difficulty {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 50px;
+  background: $color-dark-l;
+  border: 1px solid $color-main;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 80px;
+}
+
+.difficulty {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.difficulty__item {
+  padding: 30px 40px;
+  font-size: 3rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: $transition-link-hover;
+
+  &:hover {
+    filter: invert(1);
+  }
+}
+
+$colors: (
+  one: #303030,
+  two: #5f4444,
+  three: #934848,
+  four: #b93e3e,
+  five: #d52525,
+  six: #ff0000,
+);
+
+@each $clr-name, $clr in $colors {
+  .color-#{$clr-name} {
+    background-color: $clr;
+  }
+}

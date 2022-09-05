@@ -26,6 +26,6 @@ import AudioCallResultComponent from './audio-call-result/audio-call-result.comp
     MatProgressSpinnerModule,
   ],
 
-  exports: [GameAudioCallContainerComponent],
+  exports: [GameAudioCallContainerComponent, GameSettingsComponent],
 })
 export default class GameAudioCallModule {}

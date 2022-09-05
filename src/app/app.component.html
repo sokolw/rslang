@@ -1,7 +1,7 @@
 <app-header></app-header>
-<main class="main" [ngClass]="{'textbook-padding-destroyer':hasRoute('textbook')}">
+<main class="main" [ngClass]="{ 'textbook-padding-destroyer': enableTextbookPaddingDestroyer() }">
   <div class="wrapper main__wrapper">
     <router-outlet></router-outlet>
   </div>
 </main>
-<app-footer *ngIf="!hasRoute('game-audio-call')"></app-footer>
+<app-footer *ngIf="!hasRoute(disableFooterInRoutes)"></app-footer>

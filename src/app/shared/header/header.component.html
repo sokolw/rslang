@@ -13,7 +13,7 @@
             class="navigation__item"
             (mouseenter)="showDropDown()"
             [ngClass]="{ navigation__item_active: dropdownMenu && !hasRoute('/game-audio-call'),
-            navigation__item_route: hasRoute('/game-audio-call')}"
+            navigation__item_route: hasRoute('/game-audio-call') || hasRoute('/game-sprint')}"
           >
             <a href="#">Мини-игры</a>
           </li>
@@ -34,7 +34,13 @@
           first
           >Аудиовызов</a
         >
-        <a class="dropdown-menu-link" href="#" second>Спринт</a>
+        <a
+          class="dropdown-menu-link"
+          [ngClass]="{ active: hasRoute('/game-sprint') }"
+          routerLink="/game-sprint"
+          second
+          >Спринт</a
+        >
       </app-dropdown-menu>
     </div>
     <app-authorization-buttons

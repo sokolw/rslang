@@ -10,6 +10,7 @@ import { httpInterceptorProviders } from './core/auth/auth-interceptor';
 import MainPageModule from './main-page/main-page.module';
 import GameAudioCallModule from './game-audio-call/game-audio-call.module';
 import StatisticPageModule from './statistic-page/statistic-page.module';
+import GameSprintModule from './game-sprint/game-sprint.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import StatisticPageModule from './statistic-page/statistic-page.module';
     GameAudioCallModule,
     StatisticPageModule,
     TextBookModule,
+    GameSprintModule,
   ],
   bootstrap: [AppComponent],
   providers: [httpInterceptorProviders],
