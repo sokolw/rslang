@@ -17,3 +17,16 @@ app-header,
 app-footer {
   flex: 0 0 auto;
 }
+
+::-webkit-scrollbar-thumb {
+  margin-right: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+::-webkit-scrollbar {
+  opacity: 0.7;
+  width: 10px;
+  height: 0;
+  background-color: $color-black-s;
+  padding: 5px;
+}
