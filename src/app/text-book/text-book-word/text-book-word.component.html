@@ -25,6 +25,7 @@
           </button>
           <button
             class="word__btn word__btn-learned"
+            *ngIf="this.group!==6"
             [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
             (click)="createLearnedWord(word, btnLearned)"
             #btnLearned>
@@ -49,7 +50,7 @@
           <div>{{word.textMeaningTranslate}}</div>
         </div>
         <div class="stats" *ngIf="isAuthorized">
-          <img class="stats__img" src='../../../assets/icons/dislike.svg' alt="не угадано">
+          <img class="stats__img" src='../../../assets/icons/dislike.svg' alt="неугадано">
           <div class="stats__count stats__count-dislike">{{word.userWord.optional.incorrect}}</div>
         </div>
       </div>

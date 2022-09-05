@@ -91,3 +91,12 @@
   z-index: -1;
   border-radius: 20px;
 }
+
+.disabled{
+  background-color: $color-learned;
+  cursor: auto;
+
+  &:hover{
+    opacity: 1;
+  }
+}

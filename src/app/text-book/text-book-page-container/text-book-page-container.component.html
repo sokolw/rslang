@@ -12,13 +12,15 @@
       <button
         class="game__btn game__btn-audio-call"
         routerLink="/game-audio-call"
-        [queryParams]="{'group':this.group,'page':this.page}"
-      >Аудио вызов</button>
+        [ngClass]="{'disabled':this.isLearned}"
+        [disabled]="this.isLearned ? 'disabled' : null"
+        [queryParams]="{'group':this.group,'page':this.page}">Аудио вызов</button>
       <button
         class="game__btn game__btn-sprint"
         routerLink="/game-sprint"
-        [queryParams]="{'group':this.group,'page':this.page}"
-      >Спринт</button>
+        [ngClass]="{'disabled':this.isLearned}"
+        [disabled]="this.isLearned ? 'disabled' : null"
+        [queryParams]="{'group':this.group,'page':this.page}">Спринт</button>
     </div>
     <app-text-book-group-controls
       class="flex"
@@ -39,7 +41,8 @@
       class="page-controls"
       (pageChanged)="pageChanged($event)"
       [page]="page"
-      [collectionSize]="collectionSize" [isLearned]="isLearned"
+      [collectionSize]="collectionSize"
+      [isLearned]="isLearned"
     ></app-text-book-page-controls>
   </div>
 </div>
