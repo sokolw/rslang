@@ -44,11 +44,12 @@
       </app-dropdown-menu>
     </div>
     <app-authorization-buttons
+      class="authorization-btn"
       *ngIf="!authorized"
       (typeOfAuthShown)="displayPopup($event)"
     ></app-authorization-buttons>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <app-user-account *ngIf="authorized"></app-user-account>
+    <app-user-account *ngIf="authorized" class="user-account"></app-user-account>
   </div>
 </header>
 
