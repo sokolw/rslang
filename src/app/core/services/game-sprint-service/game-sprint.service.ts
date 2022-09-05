@@ -9,7 +9,7 @@ import IGameStreakStats from './interfaces/igame-streak-stats';
 import TokenStorageService from '../../auth/token-storage.service';
 import UserWordsService from '../user-words-service/user-words.service';
 import GameStatistics from '../statistics-service/model/game-statistics';
-import { GAME_SPRINT } from '../../constants/constants';
+import { GAME_SPRINT, REMOTE_URL_API } from '../../constants/constants';
 import StatisticsService from '../statistics-service/statistics.service';
 
 const DEFAULT_WORDS_IN_GAME = 20;
@@ -105,7 +105,7 @@ export default class GameSprintService {
   }
 
   getNextGameData(): IGamePartialData | null {
-    if (this.currentQuestionIndex < this.questions.length) {
+    if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex += 1;
       return {
         question: this.questions[this.currentQuestionIndex],
@@ -141,6 +141,7 @@ export default class GameSprintService {
     this.gameResult.wordsWithStatus.push({
       ...this.currentWords[index],
       isCorrect: status,
+      audio: `${REMOTE_URL_API}/${this.currentWords[index].audio}`,
     });
   }
 
@@ -190,7 +191,7 @@ export default class GameSprintService {
   getGameResult(): Observable<IGameResult> {
     this.resetStreakCorrectAnswers();
 
-    if (this.tokenStorageService.getToken()) {
+    if (this.tokenStorageService.getToken() && this.gameResult.wordsWithStatus.length > 0) {
       return this.userWordsService.updateUserWords(this.gameResult.wordsWithStatus).pipe(
         concatMap(({ newWords, learnedWords }) => {
           const gameStats = new GameStatistics(
@@ -229,6 +230,24 @@ export default class GameSprintService {
     };
     this.maxStreakCorrectAnswers = 0;
     this.currentStreakCorrectAnswers = 0;
+    this.streakStats = {
+      streak: 0,
+      streakPoints: 0,
+    };
+    this.pointsMultiplier = BASE_POINTS_MULTIPLIER;
+  }
+
+  restart() {
+    this.gameResult = {
+      totalCorrect: 0,
+      totalIncorrect: 0,
+      totalPoints: 0,
+      totalExperience: 0,
+      wordsWithStatus: [],
+    };
+    this.maxStreakCorrectAnswers = 0;
+    this.currentStreakCorrectAnswers = 0;
+    this.currentQuestionIndex = -1;
     this.streakStats = {
       streak: 0,
       streakPoints: 0,
