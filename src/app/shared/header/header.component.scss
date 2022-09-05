@@ -1,7 +1,7 @@
 @import '../../../scss/abstracts/variables';
 
 .header__wrapper {
-  padding: 2rem 0;
+  padding: 2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,5 +69,42 @@
   color: $color-light-xl;
   &.active {
     text-shadow: 0 3px 4px rgba(255, 242, 169, 0.795);
+  }
+}
+
+@media screen and (min-width: 726px) and (max-width: 1020px){
+  .header__wrapper{
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 726px){
+  .header__wrapper{
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 0;
+  }
+  .header__left{
+    flex-direction: column;
+    gap: 2rem
+  }
+  .navigation{
+    flex-direction: column;
+    gap: 15px
+  }
+
+  .authorization-btn{
+    margin-top: 200px;
+  }
+
+  .header__dropdown-menu {
+    top: 14.5rem;
+    left: 2.7rem;
+    padding-top: 3rem;
+  }
+
+  .user-account{
+    margin-top: 200px;
   }
 }
