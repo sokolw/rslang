@@ -13,7 +13,7 @@
             class="navigation__item"
             (mouseenter)="showDropDown()"
             [ngClass]="{ navigation__item_active: dropdownMenu && !hasRoute('/game-audio-call'),
-            navigation__item_route: hasRoute('/game-audio-call')}"
+            navigation__item_route: hasRoute('/game-audio-call') || hasRoute('/game-sprint')}"
           >
             <a href="#">Мини-игры</a>
           </li>
