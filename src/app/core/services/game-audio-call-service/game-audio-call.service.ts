@@ -10,6 +10,7 @@ import IGameResult from './interfaces/igame-result';
 import { GAME_AUDIO_CALL, REMOTE_URL_API } from '../../constants/constants';
 import GameStatistics from '../statistics-service/model/game-statistics';
 import IAnswer from './interfaces/ianswer';
+import shuffle from '../../../utilities/shuffle';
 
 const DEFAULT_WORDS_IN_GAME = 10;
 const POINTS_MULTIPLIER = 10;
@@ -45,8 +46,8 @@ export default class GameAudioCallService {
 
   currentStreakCorrectAnswers = 0;
 
-  start(level: number): Observable<IAudioQuestion | null> {
-    return this.words.getWordsForGame(DEFAULT_WORDS_IN_GAME, level).pipe(
+  start(group: number, page?: number): Observable<IAudioQuestion | null> {
+    return this.words.getWordsForGame(DEFAULT_WORDS_IN_GAME, group, page).pipe(
       concatMap((gameWords) => {
         this.currentWords = gameWords;
         for (let i = 0; i < this.currentWords.length; i += 1) {
@@ -93,7 +94,7 @@ export default class GameAudioCallService {
         audio: this.questions[this.currentQuestion].question,
       });
       this.resetStreakCorrectAnswers();
-      this.gameResult.totalIncorrect += +!false;
+      this.gameResult.totalIncorrect += 1;
     }
   }
 
@@ -146,7 +147,7 @@ export default class GameAudioCallService {
       }
     }
 
-    return this.shuffle(answers);
+    return shuffle<IAnswer>(answers);
   }
 
   includesWord(checkedWord: Word, answers: Array<IAnswer>): boolean {
@@ -157,23 +158,6 @@ export default class GameAudioCallService {
     }
 
     return false;
-  }
-
-  shuffle(arr: Array<IAnswer>) {
-    const resultArr = arr;
-    let currentIndex = resultArr.length;
-
-    while (currentIndex !== 0) {
-      const randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      [resultArr[currentIndex], resultArr[randomIndex]] = [
-        resultArr[randomIndex],
-        resultArr[currentIndex],
-      ];
-    }
-
-    return resultArr;
   }
 
   restart() {

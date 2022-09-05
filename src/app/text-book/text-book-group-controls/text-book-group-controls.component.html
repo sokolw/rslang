@@ -1,0 +1,14 @@
+<mat-button-toggle-group class="group" (change)="getPaginatorData($event)" name="fontStyle" aria-label="Font Style">
+  <mat-button-toggle class="group__btn"
+                     *ngFor="let groupStyle of groupsStyles; let i = index"
+                     [class]="groupStyle"
+                     [value]=i>
+    Глава {{i+1}}
+  </mat-button-toggle>
+  <mat-button-toggle class="group__btn group-7"
+                     *ngIf="isAuthorized"
+                     [value]=6>
+    Сложные слова
+  </mat-button-toggle>
+
+</mat-button-toggle-group>

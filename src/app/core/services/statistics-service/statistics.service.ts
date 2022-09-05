@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { concatMap, catchError, of } from 'rxjs';
+import { catchError, concatMap, of } from 'rxjs';
 import UserPerDayStatsRest from './model/user-per-day-stats-rest';
-import { REMOTE_URL_API, USERS_ENDPOINT, STATISTICS_ENDPOINT } from '../../constants/constants';
+import { REMOTE_URL_API, STATISTICS_ENDPOINT, USERS_ENDPOINT } from '../../constants/constants';
 import TokenStorageService from '../../auth/token-storage.service';
 import GameStatistics from './model/game-statistics';
 import UserPerDayStats from './model/user-per-day-stats';
@@ -112,8 +112,7 @@ export default class StatisticsService {
 
       return moddedStats;
     }
-    const newUserPerDayStats = this.getNewUserPerDayStats(gameStats, learnedWordsPerDay);
-    return newUserPerDayStats;
+    return this.getNewUserPerDayStats(gameStats, learnedWordsPerDay);
   }
 
   createLongTermStats(userPerDayStats: UserPerDayStats): Array<UserLongTermStats> {
@@ -184,7 +183,7 @@ export default class StatisticsService {
   }
 
   private getNewUserPerDayStats(gameStats: GameStatistics, learnedWordsPerDay: number) {
-    const userPerDayStats = new UserPerDayStats(
+    return new UserPerDayStats(
       this.getCurrentDate(),
       learnedWordsPerDay,
       gameStats.newWordsPerDay,
@@ -192,7 +191,6 @@ export default class StatisticsService {
       gameStats.percentCorrectAnswers,
       [{ ...gameStats, percentagesCorrectAnswers: [gameStats.percentCorrectAnswers] }],
     );
-    return userPerDayStats;
   }
 
   getUserStats() {

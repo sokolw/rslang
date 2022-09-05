@@ -1,5 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import IAudioQuestion from '../../core/services/game-audio-call-service/interfaces/iaudio-question';
 import GameAudioCallService from '../../core/services/game-audio-call-service/game-audio-call.service';
 
@@ -8,10 +9,7 @@ import GameAudioCallService from '../../core/services/game-audio-call-service/ga
   templateUrl: './game-audio-call-container.component.html',
   styleUrls: ['./game-audio-call-container.component.scss'],
 })
-export default class GameAudioCallContainerComponent implements OnDestroy {
-  // TODO: wait interface from text-book use ActivatedRoute for check query in OnInit
-  // TODO: import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+export default class GameAudioCallContainerComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   isLevelSelected = false;
@@ -24,17 +22,29 @@ export default class GameAudioCallContainerComponent implements OnDestroy {
 
   currentQuestion: IAudioQuestion = { question: '', answers: [] };
 
-  constructor(private gameAudioCallService: GameAudioCallService) {}
+  constructor(
+    private gameAudioCallService: GameAudioCallService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((query) => {
+      if (Object.keys(query).length !== 0) {
+        const params = { group: 0, page: 0, ...query };
+        this.prepareGame(+params.group, +params.page);
+      }
+    });
+  }
 
   ngOnDestroy(): void {
     this.gameAudioCallService.clearInstance();
     this.subscription.unsubscribe();
   }
 
-  prepareGame(group: number) {
+  prepareGame(group: number, page?: number) {
     this.isLevelSelected = true;
     this.isLoading = true;
-    this.subscription = this.gameAudioCallService.start(group).subscribe((firstQuestion) => {
+    this.subscription = this.gameAudioCallService.start(group, page).subscribe((firstQuestion) => {
       if (firstQuestion) {
         this.currentQuestion = firstQuestion;
         this.isLoading = false;

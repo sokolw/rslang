@@ -48,7 +48,7 @@ export default class UserWordsService {
             if (updatedUserWord.optional.combo > MAX_STREAK_TO_SET_LEARN) {
               updatedUserWord.difficulty = LEARNED;
               this.wordsStatsAfterUpdate.learnedWords += 1;
-            } else {
+            } else if (updatedUserWord.difficulty === LEARNED) {
               updatedUserWord.difficulty = EASY;
             }
 

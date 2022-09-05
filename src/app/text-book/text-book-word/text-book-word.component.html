@@ -1,0 +1,56 @@
+<div class="word" *ngFor="let word of words"
+     [ngClass]="{'hard-background':word.userWord.difficulty==='hard',
+     'learned-background':word.userWord.difficulty==='learned'}">
+  <div class="word__container">
+    <div class="word__img-container">
+      <img class="word__img" [src]=word.image alt="">
+    </div>
+    <div class="word__description">
+      <div class="word__title">
+        <div class="word__title-container">
+          <h4 class="word__name">{{word.word}}</h4>
+          <div class="word__name">{{word.transcription}}</div>
+          <button class="word__audio-btn" type="button" (click)="startAudio(word, audioU)">
+            <img class="word__audio" src="{{word.id === currentAudioId? src.stop: src.start}}" alt="аудио">
+          </button>
+        </div>
+        <audio #audioU [src]="word.audio"></audio>
+        <div class="word__btn-container" *ngIf="isAuthorized">
+          <button class="word__btn"
+                  [ngClass]="{'hard-btn':word.userWord.difficulty==='hard'}"
+                  (click)="createHardWord(word, btnHard)"
+                  #btnHard>
+            HARD
+          </button>
+          <button class="word__btn"
+                  [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
+                  (click)="createLearnedWord(word, btnLearned)"
+                  #btnLearned>
+            LEARNED
+          </button>
+        </div>
+      </div>
+      <div class="word__name">{{word.wordTranslate}}</div>
+      <div class='word__row'>
+        <div class="word__text">
+          <div [innerHTML]="word.textExample"></div>
+          <div>{{word.textExampleTranslate}}</div>
+        </div>
+        <div class="stats" *ngIf="isAuthorized">
+          <img class="stats__img" src='../../../assets/icons/like.svg' alt="угадано">
+          <p class="stats__count stats__count-like">{{word.userWord.optional.correct}}</p>
+        </div>
+      </div>
+      <div class='word__row'>
+        <div class="word__text" >
+          <div [innerHTML]="word.textMeaning"></div>
+          <div>{{word.textMeaningTranslate}}</div>
+        </div>
+        <div class="stats" *ngIf="isAuthorized">
+          <img class="stats__img" src='../../../assets/icons/dislike.svg' alt="неугадано">
+          <div class="stats__count stats__count-dislike">{{word.userWord.optional.incorrect}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
