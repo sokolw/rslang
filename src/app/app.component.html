@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main class="main">
+<main class="main" [ngClass]="{'textbook':hasRoute('textbook')}">
   <div class="wrapper main__wrapper">
     <router-outlet></router-outlet>
   </div>

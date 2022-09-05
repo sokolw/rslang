@@ -16,16 +16,18 @@
         </div>
         <audio #audioU [src]="word.audio"></audio>
         <div class="word__btn-container" *ngIf="isAuthorized">
-          <button class="word__btn"
-                  [ngClass]="{'hard-btn':word.userWord.difficulty==='hard'}"
-                  (click)="createHardWord(word, btnHard)"
-                  #btnHard>
+          <button
+            class="word__btn word__btn-hard"
+            [ngClass]="{'hard-btn':word.userWord.difficulty==='hard'}"
+            (click)="createHardWord(word, btnHard)"
+            #btnHard>
             HARD
           </button>
-          <button class="word__btn"
-                  [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
-                  (click)="createLearnedWord(word, btnLearned)"
-                  #btnLearned>
+          <button
+            class="word__btn word__btn-learned"
+            [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
+            (click)="createLearnedWord(word, btnLearned)"
+            #btnLearned>
             LEARNED
           </button>
         </div>
@@ -47,7 +49,7 @@
           <div>{{word.textMeaningTranslate}}</div>
         </div>
         <div class="stats" *ngIf="isAuthorized">
-          <img class="stats__img" src='../../../assets/icons/dislike.svg' alt="неугадано">
+          <img class="stats__img" src='../../../assets/icons/dislike.svg' alt="не угадано">
           <div class="stats__count stats__count-dislike">{{word.userWord.optional.incorrect}}</div>
         </div>
       </div>
