@@ -133,8 +133,6 @@ export default class GameSprintService {
       this.gameResult.totalIncorrect += 1;
       this.manageStreak(false);
     }
-
-    console.log(this.gameResult, this.streakStats, this.maxStreakCorrectAnswers);
   }
 
   private addWordInResult(index: number, status: boolean) {
