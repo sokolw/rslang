@@ -6,6 +6,11 @@ import WordsService from '../words-service/words.service';
 import IQuestion from './interfaces/iquestion';
 import IGamePartialData from './interfaces/igame-partial-data';
 import IGameStreakStats from './interfaces/igame-streak-stats';
+import TokenStorageService from '../../auth/token-storage.service';
+import UserWordsService from '../user-words-service/user-words.service';
+import GameStatistics from '../statistics-service/model/game-statistics';
+import { GAME_SPRINT } from '../../constants/constants';
+import StatisticsService from '../statistics-service/statistics.service';
 
 const DEFAULT_WORDS_IN_GAME = 20;
 const BASE_POINTS_MULTIPLIER = 10;
@@ -18,7 +23,12 @@ const MAX_LOCAL_STREAK_POINTS = 3;
   providedIn: 'root',
 })
 export default class GameSprintService {
-  constructor(private wordsService: WordsService) {}
+  constructor(
+    private wordsService: WordsService,
+    private tokenStorageService: TokenStorageService,
+    private userWordsService: UserWordsService,
+    private statisticsService: StatisticsService,
+  ) {}
 
   private currentQuestionIndex = -1;
 
@@ -175,5 +185,54 @@ export default class GameSprintService {
 
   private doubler(num: number) {
     return num * 2;
+  }
+
+  getGameResult(): Observable<IGameResult> {
+    this.resetStreakCorrectAnswers();
+
+    if (this.tokenStorageService.getToken()) {
+      return this.userWordsService.updateUserWords(this.gameResult.wordsWithStatus).pipe(
+        concatMap(({ newWords, learnedWords }) => {
+          const gameStats = new GameStatistics(
+            GAME_SPRINT,
+            newWords,
+            this.getPercentCorrectAnswers(),
+            this.maxStreakCorrectAnswers,
+          );
+          return this.statisticsService.saveGameStatsPerDay(gameStats, learnedWords);
+        }),
+        concatMap(() => {
+          return of(this.gameResult);
+        }),
+      );
+    }
+
+    return of(this.gameResult);
+  }
+
+  private getPercentCorrectAnswers(): number {
+    return (this.gameResult.totalCorrect / this.currentWords.length) * 100;
+  }
+
+  clearInstance() {
+    this.userWordsService.clearInstance();
+
+    this.questions = [];
+    this.currentQuestionIndex = -1;
+    this.currentWords = [];
+    this.gameResult = {
+      totalCorrect: 0,
+      totalIncorrect: 0,
+      totalPoints: 0,
+      totalExperience: 0,
+      wordsWithStatus: [],
+    };
+    this.maxStreakCorrectAnswers = 0;
+    this.currentStreakCorrectAnswers = 0;
+    this.streakStats = {
+      streak: 0,
+      streakPoints: 0,
+    };
+    this.pointsMultiplier = BASE_POINTS_MULTIPLIER;
   }
 }
