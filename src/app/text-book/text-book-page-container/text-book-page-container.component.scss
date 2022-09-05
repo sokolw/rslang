@@ -71,3 +71,12 @@
 .spinner{
   align-self: center;
 }
+
+.disabled{
+  background-color: $color-green-l;
+  cursor: auto;
+
+  &:hover{
+    opacity: 1;
+  }
+}
