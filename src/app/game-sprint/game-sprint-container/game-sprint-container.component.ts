@@ -11,6 +11,15 @@ export default class GameSprintContainerComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('GameSprintContainerComponent');
-    this.gameSprintService.start(0, 0).subscribe(console.log); // test questions
+    this.gameSprintService.start(0, 0).subscribe((data) => {
+      console.log(data);
+      this.gameSprintService.checkAnswer(true);
+      console.log(this.gameSprintService.getNextGameData());
+      this.gameSprintService.checkAnswer(true);
+      console.log(this.gameSprintService.getNextGameData());
+      this.gameSprintService.checkAnswer(true);
+      console.log(this.gameSprintService.getNextGameData());
+      this.gameSprintService.checkAnswer(true);
+    }); // test questions
   }
 }
