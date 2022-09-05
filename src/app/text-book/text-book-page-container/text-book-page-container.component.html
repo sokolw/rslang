@@ -9,28 +9,39 @@
   'group7':this.group===6,
   'learned':this.isLearned}">
     <div class="game__container">
-      <button class="game__btn" routerLink="/game-audio-call" [queryParams]="{'group':this.group,'page':this.page}">Аудиовызов</button>
-      <button class="game__btn" routerLink="/game-sprint" [queryParams]="{'group':this.group,'page':this.page}">Спринт</button>
+      <button
+        class="game__btn"
+        routerLink="/game-audio-call"
+        [ngClass]="{'disabled':this.isLearned}"
+        [disabled]="this.isLearned ? 'disabled' : null"
+        [queryParams]="{'group':this.group,'page':this.page}">Аудиовызов</button>
+      <button
+        class="game__btn"
+        routerLink="/game-sprint"
+        [ngClass]="{'disabled':this.isLearned}"
+        [disabled]="this.isLearned ? 'disabled' : null"
+        [queryParams]="{'group':this.group,'page':this.page}">Спринт</button>
     </div>
-    <app-text-book-group-controls class="flex"
-                                  (groupChanged)="groupChanged($event)"
-                                  [isAuthorized]="isAuthorized">
-
-    </app-text-book-group-controls>
+    <app-text-book-group-controls
+      class="flex"
+      (groupChanged)="groupChanged($event)"
+      [isAuthorized]="isAuthorized"
+    ></app-text-book-group-controls>
     <div class="scroll">
-      <app-text-book-word (learnedWord)="setLearnedPage($event)"
-                          class="word__container"
-                          [words]="words | async"
-                          [isAuthorized]="isAuthorized"
-                          [group]='group'>
-
-      </app-text-book-word>
+      <app-text-book-word
+        (learnedWord)="setLearnedPage($event)"
+        class="word__container"
+        [words]="words | async"
+        [isAuthorized]="isAuthorized"
+        [group]='group'
+      ></app-text-book-word>
       <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
     </div>
-    <app-text-book-page-controls (pageChanged)="pageChanged($event)"
-                                 [page]="page"
-                                 [collectionSize]="collectionSize" [isLearned]="isLearned">
-
-    </app-text-book-page-controls>
+    <app-text-book-page-controls
+      (pageChanged)="pageChanged($event)"
+      [page]="page"
+      [collectionSize]="collectionSize"
+      [isLearned]="isLearned"
+    ></app-text-book-page-controls>
   </div>
 </div>

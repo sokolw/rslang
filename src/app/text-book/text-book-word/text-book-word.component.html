@@ -23,6 +23,7 @@
             HARD
           </button>
           <button class="word__btn"
+                  *ngIf="this.group!==6"
                   [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
                   (click)="createLearnedWord(word, btnLearned)"
                   #btnLearned>
