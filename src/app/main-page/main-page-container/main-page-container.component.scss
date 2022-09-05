@@ -84,6 +84,8 @@ h2 {
   list-style: none;
   display: flex;
   gap: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .team__member {
@@ -91,6 +93,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  max-width: 39rem;
 }
 
 .member__avatar {
@@ -147,4 +150,10 @@ h2 {
 .advantages h2,
 .team h2 {
   font-weight: 600;
+}
+
+.description,
+.advantages,
+.team {
+  padding: 0 1rem;
 }
