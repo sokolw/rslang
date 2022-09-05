@@ -19,12 +19,13 @@
     </app-text-book-group-controls>
     <div class="scroll">
       <app-text-book-word (learnedWord)="setLearnedPage($event)"
+                          class="word__container"
                           [words]="words | async"
                           [isAuthorized]="isAuthorized"
                           [group]='group'>
 
       </app-text-book-word>
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
     </div>
     <app-text-book-page-controls (pageChanged)="pageChanged($event)"
                                  [page]="page"
