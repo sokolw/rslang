@@ -1,0 +1,21 @@
+<div class="game-sprint__container">
+  <app-game-settings
+    (selectedLevel)="prepareGame($event)"
+    *ngIf="!isLevelSelected"
+  ></app-game-settings>
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <app-game-process
+    *ngIf="isReadyData && !isEndGame"
+    [question]="currentQuestion"
+    (answer)="checkAnswer($event)"
+    (endGameEvent)="displayResults()"
+  ></app-game-process>
+
+  <app-game-result
+    *ngIf="isEndGame && !isLoading"
+    [gameResult]="gameResult"
+    (restart)="restartGame()"
+  ></app-game-result>
+</div>

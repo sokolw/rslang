@@ -1,0 +1,113 @@
+@import '../../../scss/abstracts/variables';
+
+.header__wrapper {
+  padding: 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__left {
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  height: 1.8rem;
+}
+
+.header__dropdown-menu {
+  position: absolute;
+  top: -0.3rem;
+  left: 42.7rem;
+  padding-top: 3rem;
+}
+
+.header_logo {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.8rem;
+  margin: 0;
+
+  a {
+    color: $color-main;
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: 3rem;
+
+  .navigation__item {
+    list-style-type: none;
+    font-size: 1.9rem;
+    font-family: sans-serif;
+    font-weight: 700;
+    line-height: 2.3rem;
+
+    a {
+      color: $color-light-l;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      text-shadow: $color-main 1px 1px 10px, $color-main -1px -1px 10px, $color-main -1px 1px 10px,
+        $color-main 1px -1px 10px;
+    }
+
+    transition: ease-in-out 0.3s;
+  }
+
+  .navigation__item_active,
+  .navigation__item_route {
+    text-shadow: $color-main 1px 1px 10px, $color-main -1px -1px 10px, $color-main -1px 1px 10px,
+      $color-main 1px -1px 10px;
+  }
+}
+
+.dropdown-menu-link {
+  color: $color-light-xl;
+  &.active {
+    text-shadow: 0 3px 4px rgba(255, 242, 169, 0.795);
+  }
+}
+
+@media screen and (min-width: 726px) and (max-width: 1020px){
+  .header__wrapper{
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 726px){
+  .header__wrapper{
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 0;
+  }
+  .header__left{
+    flex-direction: column;
+    gap: 2rem
+  }
+  .navigation{
+    flex-direction: column;
+    gap: 15px
+  }
+
+  .authorization-btn{
+    margin-top: 200px;
+  }
+
+  .header__dropdown-menu {
+    top: 14.5rem;
+    left: 2.7rem;
+    padding-top: 3rem;
+  }
+
+  .user-account{
+    margin-top: 200px;
+  }
+}

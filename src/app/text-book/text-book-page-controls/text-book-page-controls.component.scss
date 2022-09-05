@@ -1,0 +1,18 @@
+@import '~src/scss/abstracts/variables';
+
+.page__pagination{
+  margin-top: 10px;
+}
+
+.pagination{
+  z-index: -1;
+  border-radius: 0 0 20px 20px;
+}
+
+.mat-paginator-outer-container{
+  z-index: -1;
+}
+
+.isLearned{
+  background-color: $color-learned;
+}

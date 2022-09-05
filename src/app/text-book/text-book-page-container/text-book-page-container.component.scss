@@ -1,0 +1,104 @@
+@import '~src/scss/abstracts/mixins';
+@import '~src/scss/abstracts/variables';
+
+.wrapper{
+  border-radius: 20px;
+}
+
+.scroll {
+  height: 58vh;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 50px;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+}
+
+.group-1{
+  @include box-shadow($color-group-1);
+}
+
+.group-2{
+  @include box-shadow($color-group-2);
+}
+.group-3{
+  @include box-shadow($color-group-3);
+}
+
+.group-4{
+  @include box-shadow($color-group-4);
+}
+
+.group-5{
+  @include box-shadow($color-group-5);
+}
+
+.group-6{
+  @include box-shadow($color-group-6);
+}
+
+.group-7{
+  @include box-shadow($color-hard);
+}
+
+.learned{
+  @include box-shadow($color-learned);
+}
+
+.game__container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.game__btn{
+  transition: 0.6s all;
+  color: #bbbbbb;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: $color-gray-dark;
+  border: transparent;
+  padding: 10px 20px;
+
+  &-audio-call{
+    border-radius: 5px 0 0 5px;
+  }
+
+  &-sprint{
+    border-radius: 0 5px 5px 0  ;
+  }
+
+  &:hover{
+    color: white;
+    opacity: 0.8;
+    background-color: $color-group-1;
+  }
+}
+
+.spinner{
+  align-self: center;
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+.page-controls{
+  z-index: -1;
+  border-radius: 20px;
+}
+
+.disabled{
+  background-color: $color-learned;
+  cursor: auto;
+
+  &:hover{
+    background-color: $color-learned;
+    opacity: 1;
+    color: #bbbbbb;
+  }
+}
