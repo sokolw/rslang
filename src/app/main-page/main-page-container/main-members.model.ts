@@ -7,7 +7,7 @@ const mainMembersModel: IMember[] = [
     nickName: 'Sokolw',
     role: 'TeamLead. Developer',
     description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+      'Настройка окружения для разработки. Дизайн главной страницы, авторизации, игры аудиовызов, статистики. Реализация авторизации, header, игры аудиовызов, спринт, статистика.',
     github: 'https://github.com/sokolw',
   },
   {
@@ -16,16 +16,15 @@ const mainMembersModel: IMember[] = [
     nickName: 'PavelZabalotny',
     role: 'Developer',
     description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+      'Дизайн главной страницы, игры спринт. Реализация main, footer, верстка и таймер для игры спринт.',
     github: 'https://github.com/PavelZabalotny',
   },
   {
-    avatar: 'assets/img/avatars/wex2-avatar.jpg',
+    avatar: 'assets/img/avatars/wex2-avatar.png',
     name: 'Сергей Михеенко',
     nickName: 'Wex2',
     role: 'Developer',
-    description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    description: 'Дизайн учебника. Реализация учебника, header adaptive.',
     github: 'https://github.com/wex2',
   },
 ];
