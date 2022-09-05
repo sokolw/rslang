@@ -16,16 +16,19 @@
         </div>
         <audio #audioU [src]="word.audio"></audio>
         <div class="word__btn-container" *ngIf="isAuthorized">
-          <button class="word__btn"
-                  [ngClass]="{'hard-btn':word.userWord.difficulty==='hard'}"
-                  (click)="createHardWord(word, btnHard)"
-                  #btnHard>
+          <button
+            class="word__btn word__btn-hard"
+            [ngClass]="{'hard-btn':word.userWord.difficulty==='hard'}"
+            (click)="createHardWord(word, btnHard)"
+            #btnHard>
             HARD
           </button>
-          <button class="word__btn"
-                  [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
-                  (click)="createLearnedWord(word, btnLearned)"
-                  #btnLearned>
+          <button
+            class="word__btn word__btn-learned"
+            *ngIf="this.group!==6"
+            [ngClass]="{'learned-btn':word.userWord.difficulty==='learned'}"
+            (click)="createLearnedWord(word, btnLearned)"
+            #btnLearned>
             LEARNED
           </button>
         </div>
