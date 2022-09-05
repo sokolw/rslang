@@ -17,14 +17,16 @@ $step-size: 30px;
 .sprint__top-panel {
   display: flex;
   align-items: center;
-  column-gap: 140px;
+  gap: 140px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .top-panel__score {
   width: 90px;
   font-weight: bold;
   font-size: 4rem;
-  color: #FF00B8;
+  color: #ff00b8;
   text-align: center;
 }
 
@@ -38,7 +40,7 @@ $step-size: 30px;
     height: $step-size;
     background: $color-light-l;
     border-radius: 50%;
-    
+
     &-active {
       background: $color-main;
     }
@@ -93,7 +95,7 @@ $step-size: 30px;
   column-gap: 60px;
 }
 
-.selection-button{
+.selection-button {
   width: 260px;
   height: 80px;
   background: #595959;

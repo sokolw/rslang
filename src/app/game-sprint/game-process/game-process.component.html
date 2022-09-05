@@ -1,26 +1,48 @@
 <section class="sprint">
   <div class="sprint__top-panel">
-    <div class="top-panel__score">696969</div>
-    <ul class="top-panel__step">
-      <li class="step__item step__item-active"></li>
-      <li class="step__item"></li>
-      <li class="step__item"></li>
+    <div class="top-panel__score">{{ question.points }}</div>
+    <ul class="top-panel__step" *ngIf="!(question.streakStats.streakPoints > 2)">
+      <li
+        class="step__item"
+        [ngClass]="{ 'step__item-active': question.streakStats.streak > 0 }"
+      ></li>
+      <li
+        class="step__item"
+        [ngClass]="{ 'step__item-active': question.streakStats.streak > 1 }"
+      ></li>
+      <li
+        class="step__item"
+        [ngClass]="{ 'step__item-active': question.streakStats.streak > 2 }"
+      ></li>
     </ul>
-    <app-timer></app-timer>
+    <app-timer (timeEnd)="endGame()"></app-timer>
   </div>
   <ul class="sprint__achieves">
     <li class="achieves__item achieves__item-active"></li>
-    <li class="achieves__item"></li>
-    <li class="achieves__item"></li>
-    <li class="achieves__item"></li>
+    <li
+      class="achieves__item"
+      [ngClass]="{ 'achieves__item-active': question.streakStats.streakPoints > 0 }"
+    ></li>
+    <li
+      class="achieves__item"
+      [ngClass]="{ 'achieves__item-active': question.streakStats.streakPoints > 1 }"
+    ></li>
+    <li
+      class="achieves__item"
+      [ngClass]="{ 'achieves__item-active': question.streakStats.streakPoints > 2 }"
+    ></li>
   </ul>
   <div class="sprint__word">
-    <div class="word__target">achieve</div>
-    <div class="word__translate">достижение</div>
+    <div class="word__target">{{ question.question.word }}</div>
+    <div class="word__translate">{{ question.question.questionWord }}</div>
   </div>
   <div class="sprint__separator"></div>
   <div class="sprint__selection-button">
-    <button class="selection-button"><span class="button-arrow m-r">&#8678;</span>неверно</button>
-    <button class="selection-button">верно<span class="button-arrow m-l">&#8680;</span></button>
+    <button class="selection-button" (click)="setAnswer(false)">
+      <span class="button-arrow m-r">⇐</span>неверно
+    </button>
+    <button class="selection-button" (click)="setAnswer(true)">
+      верно<span class="button-arrow m-l">⇒</span>
+    </button>
   </div>
 </section>
