@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -20,6 +20,8 @@ export default class TimerComponent implements OnInit, OnDestroy {
 
   strokeColor = '#6200ea';
 
+  @Output() timeEnd = new EventEmitter();
+
   calculateTimeFraction() {
     const rawTimeFraction = this.timeLeft / this.timeLimit;
     return rawTimeFraction - (1 / this.timeLimit) * (1 - rawTimeFraction);
@@ -34,8 +36,7 @@ export default class TimerComponent implements OnInit, OnDestroy {
     this.timerInterval = setInterval(() => {
       if (this.timeLeft === 0) {
         clearInterval(this.timerInterval);
-        // TODO: replace console.log to necessary method
-        console.log('time is up');
+        this.timeEnd.emit();
         return;
       }
       if (this.timeLeft === 11) {
