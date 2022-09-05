@@ -1,13 +1,15 @@
 @import '~src/scss/abstracts/variables';
 
 .word {
+  transition: 0.6s all;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
   color: $color-light-xl;
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 0 5rem;
   padding: 2.7rem;
   background-color: $color-gray-dark;
+  box-shadow: 0 5px 5px $color-gray-s;
 
   &+.word{
     margin-top: 2rem;
@@ -26,7 +28,7 @@
   &__img {
     width: 300px;
     height: 200px;
-
+    border-radius: 10px;
   }
 
   &__name {
@@ -79,10 +81,29 @@
   }
 
   &__btn{
-    padding: 0 10px;
+    transition: 0.6s all;
+    border-radius: 5px;
+    color: #bbbbbb;
+    padding: 5px 10px;
     cursor: pointer;
     background-color: #444444;
     border: transparent;
+
+    &-hard{
+      &:hover{
+        color: white;
+        opacity: 0.8;
+        background-color: $color-hard;
+      }
+    }
+
+    &-learned{
+      &:hover{
+        color: white;
+        opacity: 0.8;
+        background-color: $color-learned;
+      }
+    }
   }
 
   &__row{
@@ -110,31 +131,31 @@
   }
 
   &__count-like{
-    background-color: $color-green;
+    background-color: $color-learned;
   }
 
   &__count-dislike{
-    background-color: $color-red;
+    background-color: $color-hard;
   }
 }
 
 .hard-background{
-  background-color: $color-pink-intense;
+  background-color: $color-hard-back;
 }
 
 .learned-background{
-  background-color: $color-green-l;
+  background-color: $color-learn-back;
 }
 
 .hard-btn{
-  background-color: $color-red;
+  background-color: $color-hard;
 }
 
 .learned-btn{
-  background-color: $color-green;
+  background-color: $color-learned;
 }
 
-@media screen and (min-width: 721px) and (max-width: 1100px){
+@media screen and (min-width: 801px) and (max-width: 1100px){
   .word{
     &__container{
       flex-direction: column;
@@ -150,7 +171,7 @@
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 720px){
+@media screen and (min-width: 320px) and (max-width: 800px){
   .word{
     &__container{
       flex-direction: column;

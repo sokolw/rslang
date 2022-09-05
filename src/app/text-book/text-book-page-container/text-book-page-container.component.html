@@ -1,22 +1,22 @@
 <div class="container">
   <div class="wrapper" [ngClass]="{
-  'group1':this.group===0,
-  'group2':this.group===1,
-  'group3':this.group===2,
-  'group4':this.group===3,
-  'group5':this.group===4,
-  'group6':this.group===5,
-  'group7':this.group===6,
+  'group-1':this.group===0,
+  'group-2':this.group===1,
+  'group-3':this.group===2,
+  'group-4':this.group===3,
+  'group-5':this.group===4,
+  'group-6':this.group===5,
+  'group-7':this.group===6,
   'learned':this.isLearned}">
     <div class="game__container">
       <button
-        class="game__btn"
+        class="game__btn game__btn-audio-call"
         routerLink="/game-audio-call"
         [ngClass]="{'disabled':this.isLearned}"
         [disabled]="this.isLearned ? 'disabled' : null"
-        [queryParams]="{'group':this.group,'page':this.page}">Аудиовызов</button>
+        [queryParams]="{'group':this.group,'page':this.page}">Аудио вызов</button>
       <button
-        class="game__btn"
+        class="game__btn game__btn-sprint"
         routerLink="/game-sprint"
         [ngClass]="{'disabled':this.isLearned}"
         [disabled]="this.isLearned ? 'disabled' : null"
@@ -38,6 +38,7 @@
       <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
     </div>
     <app-text-book-page-controls
+      class="page-controls"
       (pageChanged)="pageChanged($event)"
       [page]="page"
       [collectionSize]="collectionSize"
