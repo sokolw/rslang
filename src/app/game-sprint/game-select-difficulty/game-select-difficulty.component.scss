@@ -37,26 +37,17 @@
   }
 }
 
-.color-one {
-  background: #303030;
-}
+$colors: (
+  one: #303030,
+  two: #5f4444,
+  three: #934848,
+  four: #b93e3e,
+  five: #d52525,
+  six: #ff0000,
+);
 
-.color-two {
-  background: #5F4444;
-}
-
-.color-three {
-  background: #934848;
-}
-
-.color-four {
-  background: #B93E3E;
-}
-
-.color-five {
-  background: #D52525;
-}
-
-.color-six {
-  background: #FF0000;
+@each $clr-name, $clr in $colors {
+  .color-#{$clr-name} {
+    background-color: $clr;
+  }
 }
