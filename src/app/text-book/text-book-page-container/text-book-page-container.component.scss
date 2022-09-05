@@ -97,6 +97,8 @@
   cursor: auto;
 
   &:hover{
+    background-color: $color-learned;
     opacity: 1;
+    color: #bbbbbb;
   }
 }
